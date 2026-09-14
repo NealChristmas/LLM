@@ -9,9 +9,9 @@
 - 先从整体介绍大模型涉及的环节与流程，再补基础；每章完成整体知识脉络的一块拼图，随后深入。
 - 后续学习资料由助手生成并沉淀在本目录。
 - 有 3 年 C++ 和 JavaScript 开发经验，具备通用编码基础；非必要的编码知识不进入学习资料。
-- Python/PyTorch 的特殊用法只按实验需要简述；数学、机器学习基础与 GPU 条件尚未确认。
+- Python/PyTorch 的特殊用法只按实验需要简述；用户略懂数学，涉及梯度等概念时优先直接给出规范数学推导；机器学习基础与 GPU 条件尚未确认。
 - 正文以问题和因果承接展开，先解释必要性再引入概念。用户反馈初版冗余且张量引入突兀；学习安排与验收矩阵移至附页。
-- 排版采用连贯段落，减少冗余换行；重点加粗，复杂关系配图。D01 第 4 节已加入逐行计算图。
+- 排版采用连贯段落，减少冗余换行；重点加粗，复杂关系配图。公式使用 Markdown 原生可读的 Unicode 写法，不依赖 LaTeX 渲染；助记卡使用原生 Markdown，不使用 HTML 折叠标签。D01 第 4 节已加入逐行计算图。
 
 ## 当前状态
 
@@ -21,8 +21,9 @@
 | 学习路线 | 已建立 | 尚未开始记录 | roadmap.md |
 | 整体知识地图 | 三张 Mermaid 图与 D01～D17 逐章脉络已生成 | 作为持续导航，不单独判定掌握 | [知识地图](knowledge-map.md) |
 | D01：大模型内部究竟在计算什么 | 快速版已生成；卡片 5 与正文已澄清矩阵和形状，保留矩阵乘法前提 | 用户已读完正文；卡片表述反馈已处理，自测未提交，未验收 | [讲义](courses/00-foundations/d01-tensors/README.md)、[自测答案](courses/00-foundations/d01-tensors/quiz-answers.md) |
-| D02：参数怎样从数据中学出来 | 正文、图示、8 张卡片与 7 道自测及答案已生成；第三节补充偏导数的差商推导及链式法则承接 | 用户正在阅读第三节，反馈导数含义及推导不清楚；已补写，理解情况与自测待反馈 | [讲义](courses/00-foundations/d02-learning/README.md)、[答案](courses/00-foundations/d02-learning/quiz-answers.md) |
-| D03～D17 | 已规划，未生成 | 未确认开始 | 无 |
+| D02：参数怎样从数据中学出来 | 正文、图示、8 张卡片与 7 道自测及答案已生成；第三节改为偏导数与链式法则的数学推导，统一使用原生 Markdown 可读公式 | 用户正在阅读第三节；已确认略懂数学，希望直接阅读数学推导；曾反馈 LaTeX 格式显示混乱，理解情况与自测待反馈 | [讲义](courses/00-foundations/d02-learning/README.md)、[答案](courses/00-foundations/d02-learning/quiz-answers.md) |
+| D03：怎样判断模型有没有学好 | 正文、图示、8 张卡片与 7 道自测及答案已生成 | 用户要求继续；阅读与作答情况待反馈 | [讲义](courses/00-foundations/d03-probability-generalization/README.md)、[答案](courses/00-foundations/d03-probability-generalization/quiz-answers.md) |
+| D04～D17 | 已规划，未生成 | 未确认开始 | 无 |
 
 生成讲义不等于完成学习。只有用户反馈或作答结果支持时才更新完成情况；运行示例成功也不直接代表已理解。
 

@@ -2,11 +2,12 @@
 
 这里保存后续生成的大模型学习资料、示例代码、练习与复盘。学习顺序是：整体知识地图 → 最小深度学习基础 → 逐章补全大模型脉络 → 推理工程 → 按兴趣深入平台或性能优化。
 
-已确认每天可安排 4 小时，有 3 年 C++ 和 JavaScript 开发经验。当前先快速理解大模型相关知识，采用 **正文与图示 → 助记卡片 → 自测题**，不做实验或编码。D01 已提供章末卡片、自测及答案；原有实验保留为后续深入资料。
+已确认每天可安排 4 小时，有 3 年 C++ 和 JavaScript 开发经验。当前先快速理解大模型相关知识，采用 **正文与图示 → 助记卡片 → 自测题**，不做实验或编码。D01～D03 已生成正文、卡片、自测及答案；原有实验保留为后续深入资料。
 
 ## 入口
 
-- [当前开始 D02：参数怎样从数据中学出来？](courses/00-foundations/d02-learning/README.md)：沿用 D01 的例子串起损失、梯度、反向传播与更新；章末有 8 张助记卡和 7 道自测题，[答案另页](courses/00-foundations/d02-learning/quiz-answers.md)。
+- [当前开始 D03：怎样判断模型有没有学好？](courses/00-foundations/d03-probability-generalization/README.md)：串起 Logit、Softmax、交叉熵、数据划分与泛化；章末有 8 张助记卡和 7 道自测题，[答案另页](courses/00-foundations/d03-probability-generalization/quiz-answers.md)。
+- [D02：参数怎样从数据中学出来？](courses/00-foundations/d02-learning/README.md)：沿用 D01 的例子串起损失、梯度、反向传播与更新；阅读已开始，自测尚未提交。
 - [大模型知识脉络图](knowledge-map.md)：领域全景、课程顺序、实际工作流程三张 Mermaid 图，以及 D01～D17 每章要回答的问题。
 - [开始 D01](courses/00-foundations/d01-tensors/README.md)：重写版“大模型内部究竟在计算什么”，直接从开篇顺序阅读。
 - D01 助记卡片与自测题已放在正文末尾；[参考答案](courses/00-foundations/d01-tensors/quiz-answers.md)单独查看。

@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | D01 | 模型内部怎样计算？ | 解释输入、参数、张量、shape 与前向计算 |
 | [D02](courses/00-foundations/d02-learning/README.md) | 参数怎样学出来？ | 解释损失、梯度、反向传播与更新之间的关系 |
-| D03 | 怎样判断预测与学习效果？ | 区分概率、交叉熵、过拟合、训练与验证 |
+| [D03](courses/00-foundations/d03-probability-generalization/README.md) | 怎样判断预测与学习效果？ | 区分概率、交叉熵、过拟合、训练与验证 |
 | D04～D06 | 文字怎样输入并生成？ | 串联 Token、Embedding、Attention、Transformer 与采样 |
 | D07～D08 | 模型能力怎样形成和调整？ | 区分预训练、SFT、偏好优化与 LoRA |
 | D09～D11 | 如何利用外部知识？ | 解释提示词、上下文、检索与 RAG，判断典型错误来源 |
