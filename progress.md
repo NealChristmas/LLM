@@ -21,7 +21,7 @@
 | 学习路线 | 已建立 | 尚未开始记录 | roadmap.md |
 | 整体知识地图 | 三张 Mermaid 图与 D01～D17 逐章脉络已生成 | 作为持续导航，不单独判定掌握 | [知识地图](knowledge-map.md) |
 | D01：大模型内部究竟在计算什么 | 快速版已生成；卡片 5 与正文已澄清矩阵和形状，保留矩阵乘法前提 | 用户已读完正文；卡片表述反馈已处理，自测未提交，未验收 | [讲义](courses/00-foundations/d01-tensors/README.md)、[自测答案](courses/00-foundations/d01-tensors/quiz-answers.md) |
-| D02：参数怎样从数据中学出来 | 正文、图示、8 张卡片与 7 道自测及答案已生成 | 用户要求开始本章；阅读与作答情况待反馈 | [讲义](courses/00-foundations/d02-learning/README.md)、[答案](courses/00-foundations/d02-learning/quiz-answers.md) |
+| D02：参数怎样从数据中学出来 | 正文、图示、8 张卡片与 7 道自测及答案已生成；第三节补充偏导数的差商推导及链式法则承接 | 用户正在阅读第三节，反馈导数含义及推导不清楚；已补写，理解情况与自测待反馈 | [讲义](courses/00-foundations/d02-learning/README.md)、[答案](courses/00-foundations/d02-learning/quiz-answers.md) |
 | D03～D17 | 已规划，未生成 | 未确认开始 | 无 |
 
 生成讲义不等于完成学习。只有用户反馈或作答结果支持时才更新完成情况；运行示例成功也不直接代表已理解。
