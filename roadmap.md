@@ -2,7 +2,7 @@
 
 当前方式是 **阅读讲解与图示 → 助记卡片 → 自测题**，不做实验、不写代码。每天可安排 4 小时，通常学习 2 章，难点放慢；第一轮先按约 8～10 个学习日安排，这是可调整的预算，不是掌握保证。
 
-**D01～D17 继续作为稳定章节编号，不再与日历天数绑定。** D01 已开始，无需重置进度。以下阶段后的实操成果不属于本轮要求。
+**D01～D17 继续作为稳定章节编号，不再与日历天数绑定。** D01 正文已读，D02、D03 的自测尚未提交；不因进入下一章而自动判定前章已经掌握。以下阶段后的实操成果不属于本轮要求。
 
 图形总览及逐章选题见[知识脉络图](knowledge-map.md)：区分领域分类、学习顺序和实际工作流程，以下保留阶段摘要。
 
@@ -11,9 +11,11 @@
 | D01 | 模型内部怎样计算？ | 解释输入、参数、张量、shape 与前向计算 |
 | [D02](courses/00-foundations/d02-learning/README.md) | 参数怎样学出来？ | 解释损失、梯度、反向传播与更新之间的关系 |
 | [D03](courses/00-foundations/d03-probability-generalization/README.md) | 怎样判断预测与学习效果？ | 区分概率、交叉熵、过拟合、训练与验证 |
-| D04～D06 | 文字怎样输入并生成？ | 串联 Token、Embedding、Attention、Transformer 与采样 |
-| D07～D08 | 模型能力怎样形成和调整？ | 区分预训练、SFT、偏好优化与 LoRA |
-| D09～D11 | 如何利用外部知识？ | 解释提示词、上下文、检索与 RAG，判断典型错误来源 |
+| [D04](courses/01-llm-overview/d04-text-input/README.md) | 文字怎样变成模型的输入？ | 串联 Token、Token ID、Embedding 与位置信息 |
+| [D05](courses/01-llm-overview/d05-attention-transformer/README.md) | 模型怎样结合上下文处理信息？ | 串联 Q/K/V、自注意力、多头注意力与 Transformer 层 |
+| [D06](courses/01-llm-overview/d06-autoregressive-generation/README.md) | 模型怎样逐步生成文本？ | 串联因果遮罩、Logit、采样、自回归循环与停止条件 |
+| [D07](courses/01-llm-overview/d07-pretraining/README.md)～[D08](courses/01-llm-overview/d08-post-training/README.md) | 模型能力怎样形成和调整？ | 区分预训练、SFT、偏好优化与 LoRA |
+| [D09](courses/01-llm-overview/d09-prompt-context/README.md)～D11 | 如何利用外部知识？ | 解释提示词、上下文、检索与 RAG，判断典型错误来源 |
 | D12～D13 | 如何使用工具完成任务？ | 理解工具调用、执行反馈与 Agent 循环 |
 | D14～D15 | 模型服务为什么慢或占显存？ | 认识 GPU、Prefill、Decode、KV Cache 和推理服务 |
 | D16～D17 | 怎样选择改进方案？ | 用整体地图区分模型、检索、工具与服务层的问题 |

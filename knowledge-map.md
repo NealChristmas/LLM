@@ -44,19 +44,19 @@ flowchart TB
     a --> b --> c --> d --> e --> f --> g --> h
 ```
 
-每章对应一个问题。**D01～D03 正文已生成；D04～D17 目前只是规划，尚未生成课程正文。**
+每章对应一个问题。**D01～D09 正文已生成；D10～D17 目前只是规划，尚未生成课程正文。**
 
 | 章节 | 本章回答的问题 | 要连起来的概念 |
 | --- | --- | --- |
-| **D01** | 模型内部究竟在计算什么？ | 输入与参数 → 加权求和 → 矩阵与张量 → 前向计算 |
+| [**D01**](courses/00-foundations/d01-tensors/README.md) | 模型内部究竟在计算什么？ | 输入与参数 → 加权求和 → 矩阵与张量 → 前向计算 |
 | [**D02**](courses/00-foundations/d02-learning/README.md) | 参数怎样从数据中学出来？ | 预测与目标 → 损失 → 梯度与反向传播 → 参数更新 |
 | [**D03**](courses/00-foundations/d03-probability-generalization/README.md) | 怎样判断模型有没有学好？ | 概率与 Softmax → 交叉熵 → 训练/验证 → 过拟合与泛化 |
-| **D04** | 文字怎样变成模型的输入？ | Token → Token ID → Embedding → 位置信息 |
-| **D05** | 模型怎样结合上下文处理信息？ | Q/K/V 与 Attention → 多头注意力 → Transformer 层 |
-| **D06** | 模型怎样一个接一个生成 Token？ | 输出分数 → 概率与采样 → 自回归循环 → 停止条件 |
-| **D07** | 基础模型的能力从哪里来？ | 数据准备 → 预训练目标 → 训练过程 → 基础能力及局限 |
-| **D08** | 怎样让模型更适合指令和任务？ | SFT → 偏好优化与强化学习概览 → LoRA → 微调边界 |
-| **D09** | 不改参数，怎样影响这次回答？ | 提示词 → 示例与角色 → 历史消息 → 上下文窗口 |
+| [**D04**](courses/01-llm-overview/d04-text-input/README.md) | 文字怎样变成模型的输入？ | Token → Token ID → Embedding → 位置信息 |
+| [**D05**](courses/01-llm-overview/d05-attention-transformer/README.md) | 模型怎样结合上下文处理信息？ | Q/K/V 与 Attention → 多头注意力 → Transformer 层 |
+| [**D06**](courses/01-llm-overview/d06-autoregressive-generation/README.md) | 模型怎样一个接一个生成 Token？ | 因果遮罩 → 输出分数 → 概率与采样 → 自回归循环 → 停止条件 |
+| [**D07**](courses/01-llm-overview/d07-pretraining/README.md) | 基础模型的能力从哪里来？ | 数据准备 → 预训练目标 → 训练过程 → 基础能力及局限 |
+| [**D08**](courses/01-llm-overview/d08-post-training/README.md) | 怎样让模型更适合指令和任务？ | SFT → 偏好优化与强化学习概览 → LoRA → 微调边界 |
+| [**D09**](courses/01-llm-overview/d09-prompt-context/README.md) | 不改参数，怎样影响这次回答？ | 提示词 → 示例与角色 → 历史消息 → 上下文窗口 |
 | **D10** | 怎样从大量资料中找到相关内容？ | 文档切分 → 检索表示与索引 → 召回 → 重排 |
 | **D11** | 检索怎样与生成结合？ | RAG 请求过程 → 引用 → 检索错误与生成错误 → 与微调的取舍 |
 | **D12** | 模型如何使用外部工具？ | 调用信息 → 参数校验 → 程序执行 → 结果反馈 |
@@ -121,4 +121,4 @@ flowchart TB
 | AI 平台 | 容器与 Kubernetes → GPU资源管理 → 模型部署与版本 → 监控及多租户 |
 | 底层性能 | GPU架构 → 性能分析 → CUDA/Triton → 算子与通信优化 |
 
-**当前拼图是 D03：在知道怎样更新参数之后，继续解释概率预测使用什么损失，以及怎样判断模型能否泛化到新数据。** 章节学习方式见[学习路线](roadmap.md)，完成情况见[学习进度](progress.md)。
+**当前拼图是 D09：模型参数保持不变时，解释提示词、示例、聊天历史和附带材料怎样组成当前上下文并影响这一次生成。** 章节学习方式见[学习路线](roadmap.md)，完成情况见[学习进度](progress.md)。
