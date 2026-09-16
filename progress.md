@@ -1,11 +1,11 @@
 # 学习进度
 
-更新：2026-09-15。
+更新：2026-09-16。
 
 ## 已确认的学习约束
 
 - 每天可安排 4 小时。
-- 当前快速知识学习，不做实验；每章以助记卡片和自测题收尾。D01～D17 为章节编号，可一天多章。
+- 当前快速知识学习，不做实验；每章以助记卡片和自测题收尾。D01～D32 为章节编号，可一天多章。
 - 先从整体介绍大模型涉及的环节与流程，再补基础；每章完成整体知识脉络的一块拼图，随后深入。
 - 后续学习资料由助手生成并沉淀在本目录。
 - 有 3 年 C++ 和 JavaScript 开发经验，具备通用编码基础；非必要的编码知识不进入学习资料。
@@ -19,7 +19,7 @@
 | --- | --- | --- | --- |
 | 写作规范、教学方法、课时模板 | 已建立 | 不适用 | standards/ 与 templates/ |
 | 学习路线 | 已建立 | 尚未开始记录 | roadmap.md |
-| 整体知识地图 | 三张 Mermaid 图与 D01～D17 逐章脉络已生成 | 作为持续导航，不单独判定掌握 | [知识地图](knowledge-map.md) |
+| 整体知识地图 | 已扩展至 D01～D32，包含大模型全貌与推理工程原理逐章脉络 | 作为持续导航，不单独判定掌握 | [知识地图](knowledge-map.md) |
 | D01：大模型内部究竟在计算什么 | 快速版已生成；已澄清矩阵与形状，并在回顾审查中移除未展开的提前术语和失效的折叠提示 | 用户已读完正文；卡片表述反馈已处理，自测未提交，未验收 | [讲义](courses/00-foundations/d01-tensors/README.md)、[自测答案](courses/00-foundations/d01-tensors/quiz-answers.md) |
 | D02：参数怎样从数据中学出来 | 正文、图示、8 张卡片与 7 道自测及答案已生成；已补齐 D01 的 y 到 D02 的 ŷ/y 符号转换，第三节采用原生 Markdown 数学推导 | 用户正在阅读第三节；已确认略懂数学，希望直接阅读数学推导；理解情况与自测待反馈 | [讲义](courses/00-foundations/d02-learning/README.md)、[答案](courses/00-foundations/d02-learning/quiz-answers.md) |
 | D03：怎样判断模型有没有学好 | 正文、图示、8 张卡片与 7 道自测及答案已生成；变量就近解释，交叉熵、泛化及评估风险均由已有问题自然引出 | 用户正在阅读；第三、四节反馈已处理，理解情况与自测待反馈 | [讲义](courses/00-foundations/d03-probability-generalization/README.md)、[答案](courses/00-foundations/d03-probability-generalization/quiz-answers.md) |
@@ -29,7 +29,17 @@
 | D07：基础模型的能力从哪里来 | 正文、四张机制图、9 张卡片与 8 道自测及答案已生成；已根据“晦涩难懂”的反馈改为从单次预测、训练步到规律沉淀的连续例子 | 用户已阅读初版；修订版理解情况与自测待反馈，未验收 | [讲义](courses/01-llm-overview/d07-pretraining/README.md)、[答案](courses/01-llm-overview/d07-pretraining/quiz-answers.md) |
 | D08：怎样让模型更适合指令和任务 | 正文、五张机制图、9 张卡片与 8 道自测及答案已生成；已根据“晦涩难懂”的反馈拆分训练阶段与参数更新方式，并简化 LoRA 解释 | 用户已阅读初版；修订版理解情况与自测待反馈，未验收 | [讲义](courses/01-llm-overview/d08-post-training/README.md)、[答案](courses/01-llm-overview/d08-post-training/quiz-answers.md) |
 | D09：不改参数，怎样影响这一次回答 | 正文、三张机制图、9 张卡片与 8 道自测及答案已生成；已根据审查统一总结示例、澄清 Prompt/Context 边界并修正窗口超限表述 | 尚未收到阅读或作答反馈，未验收 | [讲义](courses/01-llm-overview/d09-prompt-context/README.md)、[答案](courses/01-llm-overview/d09-prompt-context/quiz-answers.md) |
-| D10～D17 | 已规划，未生成 | 未确认开始 | 无 |
+| D10：怎样从大量资料中找到相关内容 | 正文、四张机制图、9 张卡片与 8 道自测及答案已生成；生成后已按完整清单自审 | 尚未收到阅读或作答反馈，未验收 | [讲义](courses/01-llm-overview/d10-retrieval/README.md)、[答案](courses/01-llm-overview/d10-retrieval/quiz-answers.md) |
+| D11：检索到资料后，模型怎样生成答案 | 正文、两张机制图、7 张卡片与 7 道自测及答案已生成；已根据重复性审查合并可靠性边界、压缩 D09/D10 回顾并重组错误定位链 | 尚未收到阅读或作答反馈，未验收 | [讲义](courses/01-llm-overview/d11-rag/README.md)、[答案](courses/01-llm-overview/d11-rag/quiz-answers.md) |
+| D12：模型怎样使用外部工具完成动作 | 正文、三张机制图、8 张卡片与 7 道自测及答案已生成；生成后已按完整清单审查并修订 | 尚未收到阅读或作答反馈，未验收 | [讲义](courses/01-llm-overview/d12-tool-calling/README.md)、[答案](courses/01-llm-overview/d12-tool-calling/quiz-answers.md) |
+| D13：多步骤任务怎样组织和停止 | 正文、三张机制图、8 张卡片与 7 道自测及答案已生成；生成后已按完整清单审查并修订 | 尚未收到阅读或作答反馈，未验收 | [讲义](courses/01-llm-overview/d13-agent-workflow/README.md)、[答案](courses/01-llm-overview/d13-agent-workflow/quiz-answers.md) |
+| D14：模型推理为什么占显存，响应为什么会变慢 | 正文、三张机制图、8 张卡片与 7 道自测及答案已生成；已根据反馈补充 Query/Key/Value 的职责、无缓存与有缓存的对比，以及从 Prompt 首个 Token 经多层网络逐步生成到 EOS 的全流程图 | 用户反馈第 2 节不易理解；修订版理解情况与自测待反馈，未验收 | [讲义](courses/01-llm-overview/d14-inference-memory/README.md)、[答案](courses/01-llm-overview/d14-inference-memory/quiz-answers.md) |
+| D15：推理引擎怎样让更多请求更快完成 | 正文、五张机制图、8 张卡片与 7 道自测及答案已生成；已根据反馈补充量化推导，并将慢请求优化改为“拆分耗时—定位瓶颈—选择旋钮”的诊断流程 | 用户反馈量化概念引入突兀且第 7 节难懂；修订版理解情况与自测待反馈，未验收 | [讲义](courses/01-llm-overview/d15-serving-engine/README.md)、[答案](courses/01-llm-overview/d15-serving-engine/quiz-answers.md) |
+| D16：怎样知道回答和服务真的变好了 | 正文、三张机制图、8 张卡片与 8 道自测及答案已生成；重复性审查后不再重讲 D15 指标定义，改为强调公平测试条件与分位数 | 尚未收到阅读或作答反馈，未验收 | [讲义](courses/01-llm-overview/d16-evaluation/README.md)、[答案](courses/01-llm-overview/d16-evaluation/quiz-answers.md) |
+| D17：遇到问题时，应该改模型还是改系统 | 正文、四张机制图、8 张卡片与 8 道自测及答案已生成；重复性审查后将定义型卡片改为跨层场景判断 | 用户已反馈学习完正文；自测尚未提交，未验收 | [讲义](courses/01-llm-overview/d17-system-diagnosis/README.md)、[答案](courses/01-llm-overview/d17-system-diagnosis/quiz-answers.md) |
+| D18～D22：GPU 与性能判断 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；覆盖 GPU 执行、存储层级、Roofline、显存估算与性能诊断 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
+| D23～D27：单卡优化机制 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；覆盖量化执行、算子融合、FlashAttention、KV Cache 优化与推测解码 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
+| D28～D32：引擎调度与选型 | 5 章正文、图示、36 张卡片、31 道自测及答案已生成；D32 的易变能力已按 2026-09-16 官方文档核对 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
 
 生成讲义不等于完成学习。只有用户反馈或作答结果支持时才更新完成情况；运行示例成功也不直接代表已理解。
 

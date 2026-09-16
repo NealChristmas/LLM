@@ -15,10 +15,10 @@
 | [D05](courses/01-llm-overview/d05-attention-transformer/README.md) | 模型怎样结合上下文处理信息？ | 串联 Q/K/V、自注意力、多头注意力与 Transformer 层 |
 | [D06](courses/01-llm-overview/d06-autoregressive-generation/README.md) | 模型怎样逐步生成文本？ | 串联因果遮罩、Logit、采样、自回归循环与停止条件 |
 | [D07](courses/01-llm-overview/d07-pretraining/README.md)～[D08](courses/01-llm-overview/d08-post-training/README.md) | 模型能力怎样形成和调整？ | 区分预训练、SFT、偏好优化与 LoRA |
-| [D09](courses/01-llm-overview/d09-prompt-context/README.md)～D11 | 如何利用外部知识？ | 解释提示词、上下文、检索与 RAG，判断典型错误来源 |
-| D12～D13 | 如何使用工具完成任务？ | 理解工具调用、执行反馈与 Agent 循环 |
-| D14～D15 | 模型服务为什么慢或占显存？ | 认识 GPU、Prefill、Decode、KV Cache 和推理服务 |
-| D16～D17 | 怎样选择改进方案？ | 用整体地图区分模型、检索、工具与服务层的问题 |
+| [D09](courses/01-llm-overview/d09-prompt-context/README.md)～[D10](courses/01-llm-overview/d10-retrieval/README.md)～[D11](courses/01-llm-overview/d11-rag/README.md) | 如何利用外部知识？ | 解释提示词、上下文、检索与 RAG，判断典型错误来源 |
+| [D12](courses/01-llm-overview/d12-tool-calling/README.md)～[D13](courses/01-llm-overview/d13-agent-workflow/README.md) | 如何使用工具完成任务？ | 理解工具调用、执行反馈与 Agent 循环 |
+| [D14](courses/01-llm-overview/d14-inference-memory/README.md)～[D15](courses/01-llm-overview/d15-serving-engine/README.md) | 模型服务为什么慢或占显存？ | 认识 GPU、Prefill、Decode、KV Cache 和推理服务 |
+| [D16](courses/01-llm-overview/d16-evaluation/README.md)～[D17](courses/01-llm-overview/d17-system-diagnosis/README.md) | 怎样选择改进方案？ | 用整体地图区分模型、检索、工具与服务层的问题 |
 
 阅读[整体地图](knowledge-map.md)后按主线推进。每章围绕一块知识拼图，章末提供约 6～10 张卡片、5～8 道自测题和独立答案。
 
@@ -26,4 +26,12 @@
 
 ## 深入阶段
 
-完成第一轮后，再结合兴趣和条件选择推理工程或平台方向。现有 CPU 实验和代码保留为后续可选资料；环境配置、部署、压测、Kubernetes、多卡与算子优化届时再安排。本轮能复述概念，不等于已经具备对应工程实践能力。
+第一轮后进入推理工程原理，仍不安排实验。D18～D32 共 15 章，建议每天约两章，预计 8～10 个学习日；能复述原理不等于已经具备工程实践能力。
+
+| 章节 | 主线问题 | 阶段成果 |
+| --- | --- | --- |
+| [D18](courses/02-inference/d18-gpu-execution/README.md)～[D22](courses/02-inference/d22-performance-diagnosis/README.md) | 推理怎样在 GPU 上执行，瓶颈怎样定位？ | 连接算子、Kernel、存储层级、Roofline、显存估算与分阶段诊断 |
+| [D23](courses/02-inference/d23-quantization-execution/README.md)～[D27](courses/02-inference/d27-speculative-decoding/README.md) | 单卡优化分别减少了什么成本？ | 区分量化、融合、FlashAttention、KV 优化和推测解码的作用边界 |
+| [D28](courses/02-inference/d28-request-lifecycle/README.md)～[D32](courses/02-inference/d32-engine-selection/README.md) | 引擎怎样管理请求并完成选型？ | 解释生命周期、混合调度、抢占、公平性、负载建模与引擎选择 |
+
+完成 D32 后再进入实操阶段：固定模型建立基线 → 部署推理引擎 → 压测与定位 → 实施单项优化 → 多卡推理与生产服务。现有 CPU 实验和代码保留为可选资料；环境配置、Kubernetes、多卡和算子编程届时按硬件条件安排。

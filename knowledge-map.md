@@ -1,6 +1,6 @@
 # 大模型学习知识脉络
 
-**先看领域全景，再沿章节逐步补全。** 当前采用“正文与图示 → 助记卡片 → 自测题”，不做实验。D01～D17 是章节编号；每天约两章，第一轮暂按 8～10 个学习日安排。你已读完 D01 正文，D02 自测尚未提交，当前可阅读 D03；读完和通过自测分别记录在[学习进度](progress.md)。
+**先看领域全景，再沿章节逐步补全。** 当前采用“正文与图示 → 助记卡片 → 自测题”，不做实验。D01～D17 建立大模型全貌，D18～D32 深入推理工程原理；每天通常约两章。你已反馈学完 D17 正文，当前可从 D18 开始；读完和通过自测分别记录在[学习进度](progress.md)。
 
 ## 一、整个领域由哪些部分组成
 
@@ -41,10 +41,13 @@ flowchart TB
     f["D12—D13 怎样调用工具<br/>组织多步骤任务"]
     g["D14—D15 怎样运行模型<br/>理解速度与显存"]
     h["D16—D17 怎样评价效果<br/>定位问题并选择方案"]
-    a --> b --> c --> d --> e --> f --> g --> h
+    i["D18—D22 GPU怎样执行<br/>怎样定位性能瓶颈"]
+    j["D23—D27 单卡优化<br/>分别减少什么成本"]
+    k["D28—D32 引擎调度<br/>负载与选型"]
+    a --> b --> c --> d --> e --> f --> g --> h --> i --> j --> k
 ```
 
-每章对应一个问题。**D01～D09 正文已生成；D10～D17 目前只是规划，尚未生成课程正文。**
+每章对应一个问题。**D01～D17 的正文、助记卡、自测与参考答案均已生成；资料已生成不代表已经阅读或掌握。**
 
 | 章节 | 本章回答的问题 | 要连起来的概念 |
 | --- | --- | --- |
@@ -57,18 +60,38 @@ flowchart TB
 | [**D07**](courses/01-llm-overview/d07-pretraining/README.md) | 基础模型的能力从哪里来？ | 数据准备 → 预训练目标 → 训练过程 → 基础能力及局限 |
 | [**D08**](courses/01-llm-overview/d08-post-training/README.md) | 怎样让模型更适合指令和任务？ | SFT → 偏好优化与强化学习概览 → LoRA → 微调边界 |
 | [**D09**](courses/01-llm-overview/d09-prompt-context/README.md) | 不改参数，怎样影响这次回答？ | 提示词 → 示例与角色 → 历史消息 → 上下文窗口 |
-| **D10** | 怎样从大量资料中找到相关内容？ | 文档切分 → 检索表示与索引 → 召回 → 重排 |
-| **D11** | 检索怎样与生成结合？ | RAG 请求过程 → 引用 → 检索错误与生成错误 → 与微调的取舍 |
-| **D12** | 模型如何使用外部工具？ | 调用信息 → 参数校验 → 程序执行 → 结果反馈 |
-| **D13** | 多步骤任务怎样组织？ | 工作流与 Agent → 状态与反馈 → 循环与停止 → 失败处理 |
-| **D14** | 为什么推理占显存、响应会变慢？ | 权重与缓存 → GPU计算 → Prefill/Decode → KV Cache |
-| **D15** | 推理引擎怎样提高服务效率？ | 批处理与调度 → 缓存复用 → 量化概览 → 延迟与吞吐 |
-| **D16** | 怎样知道回答和服务是否变好？ | 测试集 → 质量评价 → 延迟/吞吐/成本 → 对照与错误分类 |
-| **D17** | 遇到问题应该改哪一层？ | 模型、提示词、RAG、工具、推理服务的方案判断与全景复述 |
+| [**D10**](courses/01-llm-overview/d10-retrieval/README.md) | 怎样从大量资料中找到相关内容？ | 文档切分 → 检索表示与索引 → 召回 → 重排 |
+| [**D11**](courses/01-llm-overview/d11-rag/README.md) | 检索到资料后，模型怎样生成答案？ | RAG 请求过程 → 上下文组装 → 引用 → 分层诊断 → 与微调的取舍 |
+| [**D12**](courses/01-llm-overview/d12-tool-calling/README.md) | 模型怎样使用外部工具完成动作？ | 调用信息 → 参数校验 → 程序执行 → 结果反馈 |
+| [**D13**](courses/01-llm-overview/d13-agent-workflow/README.md) | 多步骤任务怎样组织和停止？ | 工作流与 Agent → 状态与反馈 → 循环与停止 → 失败处理 |
+| [**D14**](courses/01-llm-overview/d14-inference-memory/README.md) | 模型推理为什么占显存，响应为什么会变慢？ | 权重与缓存 → GPU 计算 → Prefill/Decode → KV Cache |
+| [**D15**](courses/01-llm-overview/d15-serving-engine/README.md) | 推理引擎怎样让更多请求更快完成？ | 批处理与调度 → 缓存复用 → 量化概览 → 延迟与吞吐 |
+| [**D16**](courses/01-llm-overview/d16-evaluation/README.md) | 怎样知道回答和服务真的变好了？ | 评测集 → 质量评价 → 延迟/吞吐/成本 → 对照与回归 |
+| [**D17**](courses/01-llm-overview/d17-system-diagnosis/README.md) | 遇到问题时，应该改模型还是改系统？ | 模型、提示词、RAG、工具、推理服务的方案判断与全景复述 |
 
-**关键的跨章连接：**D02 学到的参数更新支撑 D07/D08 的训练；D03 的概率帮助理解 D06 的生成；D04 的文本表示与 D10 的检索表示有联系，但用途和模型不必相同；D06 的生成过程是 D14/D15 推理优化的对象；D16/D17 把各层重新串起来。
+**关键的跨章连接：**D02 学到的参数更新支撑 D07/D08 的训练；D03 的概率帮助理解 D06 的生成；D06 的生成过程是 D14/D15 推理优化的对象；D16/D17 把各层重新串起来；D18～D22 将“慢与占显存”落到 GPU 资源，D23～D27解释优化机制，D28～D32再把它们组织成引擎决策。
 
-## 三、这些知识怎样组成一个实际系统
+## 三、推理工程原理的章节拼图
+
+| 章节 | 本章回答的问题 | 要连起来的概念 |
+| --- | --- | --- |
+| [**D18**](courses/02-inference/d18-gpu-execution/README.md) | 一次模型推理怎样落到 GPU 上？ | 模型权重 → 算子 → Kernel → 隐藏向量 |
+| [**D19**](courses/02-inference/d19-gpu-memory/README.md) | GPU 为什么需要多层存储？ | 容量 → 带宽 → 缓存 → 数据复用 |
+| [**D20**](courses/02-inference/d20-compute-memory-bound/README.md) | 怎样判断受计算还是搬运限制？ | 算术强度 → Roofline → 计算/带宽瓶颈 |
+| [**D21**](courses/02-inference/d21-memory-estimation/README.md) | 怎样估算推理显存？ | 权重 → KV Cache → 工作区 → 活动 Token 容量 |
+| [**D22**](courses/02-inference/d22-performance-diagnosis/README.md) | 怎样判断推理到底慢在哪里？ | 阶段 → 负载 → 资源 → 可证伪假设 |
+| [**D23**](courses/02-inference/d23-quantization-execution/README.md) | 量化怎样参与推理计算？ | 低比特读取 → 反量化/低精度 Kernel → 质量与速度 |
+| [**D24**](courses/02-inference/d24-operator-fusion/README.md) | 算子融合为什么可能加速？ | Kernel 启动 → 中间张量 → 片上复用 |
+| [**D25**](courses/02-inference/d25-flash-attention/README.md) | FlashAttention 为什么减少显存访问？ | 注意力分块 → 在线 Softmax → 避免大型中间矩阵 |
+| [**D26**](courses/02-inference/d26-kv-cache-optimization/README.md) | KV Cache 可以怎样优化？ | KV 头 → 精度 → 窗口 → 分页管理 |
+| [**D27**](courses/02-inference/d27-speculative-decoding/README.md) | 为什么可能一次推进多个 Token？ | 草稿候选 → 目标模型验证 → 接受长度 |
+| [**D28**](courses/02-inference/d28-request-lifecycle/README.md) | 引擎怎样管理请求生命周期？ | 请求状态 → 调度 → 执行 → 采样 → 回收 |
+| [**D29**](courses/02-inference/d29-mixed-scheduling/README.md) | Prefill 与 Decode 怎样共享 GPU？ | 连续批处理 → Chunked Prefill → 双重预算 |
+| [**D30**](courses/02-inference/d30-preemption-fairness/README.md) | 资源不够时先服务谁？ | 抢占 → 老化 → 公平性 → 准入控制 |
+| [**D31**](courses/02-inference/d31-workload-aware-serving/README.md) | 为什么不同负载需要不同配置？ | 长度分布 → 到达方式 → 前缀复用 → 分流 |
+| [**D32**](courses/02-inference/d32-engine-selection/README.md) | 主流推理引擎怎样选择？ | 硬约束 → 官方支持 → 公平压测 → 运维成本 |
+
+## 四、这些知识怎样组成一个实际系统
 
 下面是**工作流程图**，与课程顺序不同。上半部是模型准备，下半部是一次请求。RAG 和工具调用是可选分支；推理服务支撑模型执行，并不是模型回答后才发生的一步。
 
@@ -110,9 +133,9 @@ flowchart TB
 
 **训练改变参数，普通请求主要使用已有参数。** 常见 RAG 应用把检索资料加入输入；工具调用让外部程序实际执行操作，并把结果送回模型。图中训练、后训练与工具分支均为教学概括，具体系统的组合和循环会有差异。预训练与微调参见 [Hugging Face 课程](https://huggingface.co/learn/llm-course/chapter1/4)，检索与生成结合参见 [RAG 论文](https://arxiv.org/abs/2005.11401)，模型与行动循环的一种方案参见 [ReAct 论文](https://arxiv.org/abs/2210.03629)。
 
-## 四、第一轮结束后往哪里深入
+## 五、D32 之后往哪里深入
 
-第一轮先能解释上述关系。多模态、MoE、长上下文属于模型方面的扩展；部署、分布式与平台属于后续工程方向，**当前不加实验要求，也不把这些分支全部塞入 D01～D17。**
+D32 之前先能解释上述关系。多模态、MoE、长上下文属于模型方面的扩展；部署实操、分布式与平台属于后续工程方向，**当前不加实验要求。**
 
 | 方向 | 后续知识链 |
 | --- | --- |
@@ -121,4 +144,4 @@ flowchart TB
 | AI 平台 | 容器与 Kubernetes → GPU资源管理 → 模型部署与版本 → 监控及多租户 |
 | 底层性能 | GPU架构 → 性能分析 → CUDA/Triton → 算子与通信优化 |
 
-**当前拼图是 D09：模型参数保持不变时，解释提示词、示例、聊天历史和附带材料怎样组成当前上下文并影响这一次生成。** 章节学习方式见[学习路线](roadmap.md)，完成情况见[学习进度](progress.md)。
+**D01～D32 的资料已生成，当前阅读入口是 D18：理解模型运算怎样从程序落到 GPU。** D32 后进入固定模型的部署、压测和优化实操；章节学习方式见[学习路线](roadmap.md)，完成情况见[学习进度](progress.md)。
