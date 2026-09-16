@@ -37,9 +37,9 @@
 | D15：推理引擎怎样让更多请求更快完成 | 正文、五张机制图、8 张卡片与 7 道自测及答案已生成；已根据反馈补充量化推导，并将慢请求优化改为“拆分耗时—定位瓶颈—选择旋钮”的诊断流程 | 用户反馈量化概念引入突兀且第 7 节难懂；修订版理解情况与自测待反馈，未验收 | [讲义](courses/01-llm-overview/d15-serving-engine/README.md)、[答案](courses/01-llm-overview/d15-serving-engine/quiz-answers.md) |
 | D16：怎样知道回答和服务真的变好了 | 正文、三张机制图、8 张卡片与 8 道自测及答案已生成；重复性审查后不再重讲 D15 指标定义，改为强调公平测试条件与分位数 | 尚未收到阅读或作答反馈，未验收 | [讲义](courses/01-llm-overview/d16-evaluation/README.md)、[答案](courses/01-llm-overview/d16-evaluation/quiz-answers.md) |
 | D17：遇到问题时，应该改模型还是改系统 | 正文、四张机制图、8 张卡片与 8 道自测及答案已生成；重复性审查后将定义型卡片改为跨层场景判断 | 用户已反馈学习完正文；自测尚未提交，未验收 | [讲义](courses/01-llm-overview/d17-system-diagnosis/README.md)、[答案](courses/01-llm-overview/d17-system-diagnosis/quiz-answers.md) |
-| D18～D22：GPU 与性能判断 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；覆盖 GPU 执行、存储层级、Roofline、显存估算与性能诊断 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
-| D23～D27：单卡优化机制 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；覆盖量化执行、算子融合、FlashAttention、KV Cache 优化与推测解码 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
-| D28～D32：引擎调度与选型 | 5 章正文、图示、36 张卡片、31 道自测及答案已生成；D32 的易变能力已按 2026-09-16 官方文档核对 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
+| D18～D22：GPU 与性能判断 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；第二轮审查已明确 Token ID 在 GPU 上经 Embedding 得到向量，并复核公式、变量与练习 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
+| D23～D27：单卡优化机制 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；第二轮审查已补全缩放点积公式并复核五种优化的作用边界 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
+| D28～D32：引擎调度与选型 | 5 章正文、图示、36 张卡片、31 道自测及答案已生成；第二轮审查已移除答案中的未定义缩写，D32 易变能力已按 2026-09-16 官方文档核对 | 尚未开始阅读，未验收 | [阶段入口](courses/02-inference/README.md) |
 
 生成讲义不等于完成学习。只有用户反馈或作答结果支持时才更新完成情况；运行示例成功也不直接代表已理解。
 

@@ -33,6 +33,7 @@
 - [资料制作规范](standards/material-guide.md)：写作、教学、代码与质量要求。
 - [参考依据](standards/sources.md)：已查阅的写作与教学设计资料及采用方式。
 - [课时模板](templates/lesson-template.md)：后续讲义的通用结构。
+- [学习资料 Skills](skills/README.md)：写作与质量审查 Skill 的可版本管理源码。
 - [本目录协作约定](AGENTS.md)：让后续在该目录中的工作延续已确认的偏好。
 
 ## 后续资料组织
