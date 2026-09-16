@@ -2,4 +2,3 @@ interface:
   display_name: "学习资料写作"
   short_description: "编写概念自然引入、推理连贯且练习一致的中文技术学习资料"
   default_prompt: "使用 $learning-material-writing 编写这份中文技术学习资料，并在交付前完成就地质量检查。"
-

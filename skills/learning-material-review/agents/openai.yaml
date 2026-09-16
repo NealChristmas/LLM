@@ -2,4 +2,3 @@ interface:
   display_name: "学习资料质量审查"
   short_description: "审查中文技术学习资料的正确性、重复性、教学连贯性与排版质量"
   default_prompt: "使用 $learning-material-review 审查这份学习资料，并按优先级给出可执行的改进建议。"
-
