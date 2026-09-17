@@ -1,4 +1,4 @@
-# 第一轮路线：快速建立大模型知识全貌
+# 大模型学习路线
 
 当前方式是 **阅读讲解与图示 → 助记卡片 → 自测题**，不做实验、不写代码。每天可安排 4 小时，通常学习 2 章，难点放慢；第一轮先按约 8～10 个学习日安排，这是可调整的预算，不是掌握保证。
 
@@ -34,4 +34,15 @@
 | [D23](courses/02-inference/d23-quantization-execution/README.md)～[D27](courses/02-inference/d27-speculative-decoding/README.md) | 单卡优化分别减少了什么成本？ | 区分量化、融合、FlashAttention、KV 优化和推测解码的作用边界 |
 | [D28](courses/02-inference/d28-request-lifecycle/README.md)～[D32](courses/02-inference/d32-engine-selection/README.md) | 引擎怎样管理请求并完成选型？ | 解释生命周期、混合调度、抢占、公平性、负载建模与引擎选择 |
 
-完成 D32 后再进入实操阶段：固定模型建立基线 → 部署推理引擎 → 压测与定位 → 实施单项优化 → 多卡推理与生产服务。现有 CPU 实验和代码保留为可选资料；环境配置、Kubernetes、多卡和算子编程届时按硬件条件安排。
+## 实战阶段
+
+D33～D47 将使用同一个模型和一套固定负载，依次完成**环境与基线 → 推理服务 → 压测与诊断 → 单项优化 → 多卡与可靠性 → 综合交付**。每章按一个 4 小时实践单元设计，具体命令和模型在 D33 确认硬件后再固定。
+
+| 章节 | 主线问题 | 阶段成果 |
+| --- | --- | --- |
+| [D33～D35](courses/03-inference-practice/README.md#第一阶段建立可复现基线) | 环境、模型和基线怎样固定？ | 环境清单、模型清单、可复现的单请求基线 |
+| [D36～D39](courses/03-inference-practice/README.md#第二阶段从模型运行到可测量服务) | 怎样部署、压测并定位瓶颈？ | 可调用服务、固定负载、监控证据与诊断报告 |
+| [D40～D44](courses/03-inference-practice/README.md#第三阶段一次只验证一种优化) | 优化是否在目标负载下真正有效？ | 批处理、KV Cache、量化、前缀优化和引擎对比数据 |
+| [D45～D47](courses/03-inference-practice/README.md#第四阶段从单卡实验走向可交付系统) | 怎样扩展并形成生产级结论？ | 多卡设计、故障恢复记录和最终部署选型报告 |
+
+完整章节与验收产物见[推理工程实战规划](courses/03-inference-practice/README.md)。Kubernetes、多租户平台和 CUDA/Triton 留到完成 D47 后按职业方向选择，避免同时展开三条实践线。

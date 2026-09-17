@@ -2,17 +2,19 @@
 
 这里保存后续生成的大模型学习资料、示例代码、练习与复盘。学习顺序是：整体知识地图 → 最小深度学习基础 → 逐章补全大模型脉络 → 推理工程 → 按兴趣深入平台或性能优化。
 
-已确认每天可安排 4 小时，有 3 年 C++ 和 JavaScript 开发经验。当前采用 **正文与图示 → 助记卡片 → 自测题**，不做实验或编码。D01～D17 的大模型全貌和 D18～D32 的推理工程原理均已生成；原有实验保留为后续实操资料。
+已确认每天可安排 4 小时，有 3 年 C++ 和 JavaScript 开发经验。D01～D32 采用 **正文与图示 → 助记卡片 → 自测题**；当前从 D33 进入推理工程实战，增加可复现实验、原始结果与验收记录。
 
 ## 入口
 
-- [当前开始 D18：一次模型推理怎样落到 GPU 上？](courses/02-inference/d18-gpu-execution/README.md)：从模型权重、算子和 GPU Kernel 建立推理执行链；章末有助记卡、自测题及[独立答案](courses/02-inference/d18-gpu-execution/quiz-answers.md)。
-- [D18～D32 推理工程原理总入口](courses/02-inference/README.md)：GPU 与性能判断 → 单卡优化机制 → 引擎调度与选型。
+- [当前开始 D33：环境能否完成推理实战？](courses/03-inference-practice/d33-environment/README.md)：解释硬件与软件栈，记录当前主机环境，并选择本机或云端路线。
+- [D33～D47 推理工程实战规划](courses/03-inference-practice/README.md)：环境与基线 → 服务与压测 → 单项优化 → 多卡、可靠性与综合交付。
+- [D18～D32 推理工程原理课程](courses/02-inference/README.md)：GPU 与性能判断 → 单卡优化机制 → 引擎调度与选型；已读完正文，可按需返回具体章节复习或完成自测。
 - [D13：多步骤任务怎样组织和停止？](courses/01-llm-overview/d13-agent-workflow/README.md)：区分工作流与 Agent，串起状态、反馈、循环和停止条件。
 - [D14：模型推理为什么占显存，响应为什么会变慢？](courses/01-llm-overview/d14-inference-memory/README.md)：串起权重、KV Cache、GPU、Prefill 与 Decode。
 - [D15：推理引擎怎样让更多请求更快完成？](courses/01-llm-overview/d15-serving-engine/README.md)：串起连续批处理、PagedAttention、前缀缓存、量化、延迟与吞吐。
 - [D16：怎样知道回答和服务真的变好了？](courses/01-llm-overview/d16-evaluation/README.md)：串起评测集、评分标准、组件评测、性能指标、对照与回归。
 - [D17：遇到问题时，应该改模型还是改系统？](courses/01-llm-overview/d17-system-diagnosis/README.md)：用全栈诊断图完成 D01～D17 的方案选择与知识收束。
+- [D01～D17 阶段总结](courses/01-llm-overview/stage-summary/README.md)：用一条完整系统链串起训练、生成、RAG、工具、Agent、推理服务与评测，并附阶段自测。
 - [D11：检索到资料后，模型怎样生成答案？](courses/01-llm-overview/d11-rag/README.md)：串起 RAG 请求、上下文组装、证据引用、分层诊断与方案选择。
 - [D10：怎样从大量资料中找到相关内容？](courses/01-llm-overview/d10-retrieval/README.md)：串起文档切分、检索向量、相似度、索引、召回、重排与混合检索。
 - [D09：不改参数，怎样影响这一次回答？](courses/01-llm-overview/d09-prompt-context/README.md)：串起提示词、少样本示例、消息与历史、上下文窗口及方案边界。
@@ -45,6 +47,7 @@
 | courses/00-foundations/d01-tensors/ | 深度学习基础课时 |
 | courses/01-llm-overview/d04-text-input/ | 大模型结构与生成课时 |
 | courses/02-inference/ | 后续推理工程课程 |
+| courses/03-inference-practice/ | D33～D47 推理部署、压测、优化与交付实战 |
 | 每课 README.md | 连贯讲解、必要图示、章末助记卡片和自测题 |
 | 每课 quiz-answers.md | 当前快速学习自测答案 |
 | 每课 assets/ | 本地图示 |
