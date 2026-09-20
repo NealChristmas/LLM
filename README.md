@@ -6,6 +6,9 @@
 
 ## 入口
 
+- [补充：同一个模型，为什么能答得更好或运行得更快？](supplements/llm-inference-control/README.md)：沿一次请求串起上下文、Prefill/Decode、生成控制、连续批处理、KV Cache、量化与 Test-Time Scaling，并区分质量、延迟、吞吐、显存和成本。
+- [补充：一份资料，怎样变成大模型真正能学习的数据？](supplements/llm-training-data/README.md)：区分语料、预训练数据、SFT、偏好、RL 与蒸馏数据，串起清洗、去重、配比、数据单位和污染控制。
+- [补充：同一个出差助手，是怎样一步步训练出来的？](supplements/training-to-agentic-ai/README.md)：沿同一出差任务串起下一 Token 预测、SFT、RLHF、DPO、GRPO、轨迹训练与 Agent 系统边界。
 - [当前开始 D33：环境能否完成推理实战？](courses/03-inference-practice/d33-environment/README.md)：解释硬件与软件栈，记录当前主机环境，并选择本机或云端路线。
 - [D33～D47 推理工程实战规划](courses/03-inference-practice/README.md)：环境与基线 → 服务与压测 → 单项优化 → 多卡、可靠性与综合交付。
 - [D18～D32 推理工程原理课程](courses/02-inference/README.md)：GPU 与性能判断 → 单卡优化机制 → 引擎调度与选型；已读完正文，可按需返回具体章节复习或完成自测。
