@@ -1,16 +1,20 @@
 # 大模型学习资料库
 
-这里保存后续生成的大模型学习资料、示例代码、练习与复盘。学习顺序是：整体知识地图 → 最小深度学习基础 → 逐章补全大模型脉络 → 推理工程 → 按兴趣深入平台或性能优化。
+这里保存后续生成的大模型学习资料、示例代码、练习与复盘。学习顺序是：整体知识地图 → 最小深度学习基础 → 逐章补全大模型脉络；主线随后进入推理工程，也可以从 D12/D13 分出 Agent Harness 工程支线，并按兴趣继续深入平台或底层性能。
 
-已确认每天可安排 4 小时，有 3 年 C++ 和 JavaScript 开发经验。D01～D32 采用 **正文与图示 → 助记卡片 → 自测题**；当前从 D33 进入推理工程实战，增加可复现实验、原始结果与验收记录。
+已确认每天可安排 4 小时，有 3 年 C++ 和 JavaScript 开发经验。D01～D32 采用 **正文与图示 → 助记卡片 → 自测题**；后续进入 D33～D47 推理工程实战，实验阶段增加可复现实验、原始结果与验收记录。
 
 ## 入口
 
+- [补充：Ollama 怎样在 CPU 上完成一次大模型推理？](supplements/ollama-cpu-inference/README.md)：沿请求进入、N 层 Transformer、CPU 线程与向量 Kernel 串起 Prefill、KV Cache 和逐 Token Decode。
+- [昇腾专项：一套 AI 任务怎样从模型落到行业系统？](supplements/ascend-special-topic/README.md)：沿硬件产品形态、CANN 基础软件、训推框架、MindStudio 工具链和行业使能建立昇腾全栈地图；官方版本信息核对至 2026-09-21。
 - [补充：同一个模型，为什么能答得更好或运行得更快？](supplements/llm-inference-control/README.md)：沿一次请求串起上下文、Prefill/Decode、生成控制、连续批处理、KV Cache、量化与 Test-Time Scaling，并区分质量、延迟、吞吐、显存和成本。
 - [补充：一份资料，怎样变成大模型真正能学习的数据？](supplements/llm-training-data/README.md)：区分语料、预训练数据、SFT、偏好、RL 与蒸馏数据，串起清洗、去重、配比、数据单位和污染控制。
 - [补充：同一个出差助手，是怎样一步步训练出来的？](supplements/training-to-agentic-ai/README.md)：沿同一出差任务串起下一 Token 预测、SFT、RLHF、DPO、GRPO、轨迹训练与 Agent 系统边界。
-- [当前开始 D33：环境能否完成推理实战？](courses/03-inference-practice/d33-environment/README.md)：解释硬件与软件栈，记录当前主机环境，并选择本机或云端路线。
+- [MoE 推理专题：为什么参数很多，却只计算一部分？](courses/02-inference/moe-special-topic/README.md)：补齐专家路由、总参数与激活参数、显存估算和多卡通信，再进入实战。
+- [推理实战入口 D33：环境能否完成推理实战？](courses/03-inference-practice/d33-environment/README.md)：解释硬件与软件栈，记录当前主机环境，并选择本机或云端路线。
 - [D33～D47 推理工程实战规划](courses/03-inference-practice/README.md)：环境与基线 → 服务与压测 → 单项优化 → 多卡、可靠性与综合交付。
+- [Agent Harness 工程学习入口](courses/04-agent-harness/README.md)：从旧项目继承 Learn Claude Code 17 章讲义、代码、图示和 s01～s10 自测；旧日志记录 s01～s10 已学习，掌握情况待复核，下一章为 s11 Background Tasks。
 - [D18～D32 推理工程原理课程](courses/02-inference/README.md)：GPU 与性能判断 → 单卡优化机制 → 引擎调度与选型；已读完正文，可按需返回具体章节复习或完成自测。
 - [D13：多步骤任务怎样组织和停止？](courses/01-llm-overview/d13-agent-workflow/README.md)：区分工作流与 Agent，串起状态、反馈、循环和停止条件。
 - [D14：模型推理为什么占显存，响应为什么会变慢？](courses/01-llm-overview/d14-inference-memory/README.md)：串起权重、KV Cache、GPU、Prefill 与 Decode。
@@ -51,6 +55,8 @@
 | courses/01-llm-overview/d04-text-input/ | 大模型结构与生成课时 |
 | courses/02-inference/ | 后续推理工程课程 |
 | courses/03-inference-practice/ | D33～D47 推理部署、压测、优化与交付实战 |
+| courses/04-agent-harness/ | 从旧项目继承的 Learn Claude Code 17 章 Agent Harness 工程课程、代码、自测与进度 |
+| supplements/ascend-special-topic/ | 昇腾硬件、CANN、训推框架、MindStudio 与行业应用专项 |
 | 每课 README.md | 连贯讲解、必要图示、章末助记卡片和自测题 |
 | 每课 quiz-answers.md | 当前快速学习自测答案 |
 | 每课 assets/ | 本地图示 |

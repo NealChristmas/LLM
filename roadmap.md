@@ -34,6 +34,12 @@
 | [D23](courses/02-inference/d23-quantization-execution/README.md)～[D27](courses/02-inference/d27-speculative-decoding/README.md) | 单卡优化分别减少了什么成本？ | 区分量化、融合、FlashAttention、KV 优化和推测解码的作用边界 |
 | [D28](courses/02-inference/d28-request-lifecycle/README.md)～[D32](courses/02-inference/d32-engine-selection/README.md) | 引擎怎样管理请求并完成选型？ | 解释生命周期、混合调度、抢占、公平性、负载建模与引擎选择 |
 
+## Agent Harness 工程支线
+
+[Agent Harness 工程课程](courses/04-agent-harness/README.md)从 D09、D12、D13 的上下文、工具调用和 Agent 循环继续进入代码实践。资料继承自旧项目中的 Learn Claude Code 17 章新版：旧日志记录 s01～s10 已学习，但没有保留独立作答和得分，当前项目也尚未复运行，因此掌握情况仍需后续证据确认。
+
+这条支线不要求重学 s01～s10，下一章是 [s11 Background Tasks](courses/04-agent-harness/learn-claude-code/s11_background_tasks/README.zh.md)。此后依次学习定时任务、Agent Teams、MCP、集成 Harness、Workflow Runtime 和 Goal Loop。它与 D33～D47 推理实战分别记录进度：前者关注模型怎样在工具和运行时中持续行动，后者关注模型服务怎样部署、测量和优化。
+
 ## 实战阶段
 
 D33～D47 将使用同一个模型和一套固定负载，依次完成**环境与基线 → 推理服务 → 压测与诊断 → 单项优化 → 多卡与可靠性 → 综合交付**。每章按一个 4 小时实践单元设计，具体命令和模型在 D33 确认硬件后再固定。

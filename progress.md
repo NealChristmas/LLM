@@ -1,6 +1,6 @@
 # 学习进度
 
-更新：2026-09-20。
+更新：2026-09-21。
 
 ## 已确认的学习约束
 
@@ -10,6 +10,7 @@
 - 后续学习资料由助手生成并沉淀在本目录。
 - 学习正文须脱离视频、输入摘要和聊天记录独立阅读，直接讲解知识，不包含来源纠错或待确认名称说明；三份补充讲义已按此要求修订，名称疑点移至[制作记录](standards/supplement-editorial-notes.md)。
 - 有 3 年 C++ 和 JavaScript 开发经验，具备通用编码基础；非必要的编码知识不进入学习资料。
+- Agent Harness 支线继承旧项目的 Learn Claude Code 17 章新版资料；旧日志支持 s01～s10 已学习，但不据此宣称掌握或在当前项目复运行成功。旧计划按每天 6 小时估算，不覆盖当前每天 4 小时的安排。
 - Python/PyTorch 的特殊用法只按实验需要简述；用户略懂数学，涉及梯度等概念时优先直接给出规范数学推导。D33 已只读检测当前主机：无 NVIDIA GPU，后续 GPU 实验环境尚未最终确认。
 - 正文以问题和因果承接展开；新概念按“已有问题 → 旧方法不足 → 所需机制 → 概念名称”自然引入，避免先抛术语再补定义。用户反馈初版冗余且张量引入突兀；学习安排与验收矩阵移至附页。
 - 排版采用连贯段落，减少冗余换行；重点加粗，复杂关系配图。公式使用 Markdown 原生可读的 Unicode 写法，不依赖 LaTeX 渲染；助记卡使用原生 Markdown，不使用 HTML 折叠标签。变量在首次使用处就近解释，只有符号很多且反复使用时才列符号表；公式变形前说明目的。D01 第 4 节已加入逐行计算图。
@@ -18,6 +19,7 @@
 
 | 项目 | 资料准备 | 学习状态 | 证据 |
 | --- | --- | --- | --- |
+| Ollama CPU 推理补充 | 说明文档与四张机制图已生成；区分 Ollama 服务、推理引擎、CPU 线程和算子 Kernel，并展开 N 层 Transformer 的 Prefill 与 Decode | 尚未收到阅读反馈，未验收 | [讲解](supplements/ollama-cpu-inference/README.md) |
 | 写作规范、教学方法、课时模板 | 已建立 | 不适用 | standards/ 与 templates/ |
 | 学习路线 | 已建立 | 尚未开始记录 | roadmap.md |
 | 整体知识地图 | 已扩展至 D01～D32，包含大模型全貌与推理工程原理逐章脉络 | 作为持续导航，不单独判定掌握 | [知识地图](knowledge-map.md) |
@@ -40,13 +42,16 @@
 | D17：遇到问题时，应该改模型还是改系统 | 正文、四张机制图、8 张卡片与 8 道自测及答案已生成；重复性审查后将定义型卡片改为跨层场景判断 | 用户已反馈学习完正文；自测尚未提交，未验收 | [讲义](courses/01-llm-overview/d17-system-diagnosis/README.md)、[答案](courses/01-llm-overview/d17-system-diagnosis/quiz-answers.md) |
 | D01～D17 阶段总结 | 跨章总结、六张关系图、10 张阶段卡片、10 道阶段自测及答案已生成；以请假制度场景串起模型与系统两条时间线 | 尚未收到阅读或作答反馈，未验收 | [总结](courses/01-llm-overview/stage-summary/README.md)、[答案](courses/01-llm-overview/stage-summary/quiz-answers.md) |
 | D18～D22：GPU 与性能判断 | 5 章正文、图示、36 张卡片、31 道自测及答案已生成；D18 已用 2×2 矩阵重写 GPU、算子与 Kernel，D20 第 2 节已用“计算上限—数据供给上限”及单位消除过程重写 Roofline，D21 已加入 Qwen2.5-7B-Instruct 的 BF16 权重、KV Cache 与 24 GiB 显存预算算例 | 用户已读完本阶段正文；期间提出的 D18、D20、D21 疑问已修订或解答，自测尚未提交，未验收 | [阶段入口](courses/02-inference/README.md) |
-| D23～D27：单卡优化机制 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；第二轮审查已补全缩放点积公式并复核五种优化的作用边界 | 用户已读完本阶段正文；自测尚未提交，未验收 | [阶段入口](courses/02-inference/README.md) |
-| D28～D32：引擎调度与选型 | 5 章正文、图示、36 张卡片、31 道自测及答案已生成；第二轮审查已移除答案中的未定义缩写，D32 易变能力已按 2026-09-16 官方文档核对 | 用户已读完本阶段正文；自测尚未提交，未验收 | [阶段入口](courses/02-inference/README.md) |
+| D23～D27：单卡优化机制 | 5 章正文、图示、35 张卡片、30 道自测及答案已生成；本轮审查为 D26 增加同一显存算例，为 D27 补全候选、并行验证、拒绝修正与接受长度的连续过程 | 用户已读完本阶段正文；自测尚未提交，未验收 | [阶段入口](courses/02-inference/README.md) |
+| D28～D32：引擎调度与选型 | 5 章正文、图示、36 张卡片、33 道自测及答案已生成；本轮审查补全准入与调度边界、连续批处理、抢占、开放式/闭环负载和贯穿式选型案例，D32 易变能力已按 2026-09-21 官方文档复核 | 用户已读完本阶段正文；自测尚未提交，未验收 | [阶段入口](courses/02-inference/README.md) |
+| MoE 推理专题 | 正文、五张机制图、10 张卡片、8 道自测及答案已生成；包含 Mixtral 8x7B 的总参数、激活参数与 BF16 权重算例 | 尚未开始阅读，未验收 | [讲义](courses/02-inference/moe-special-topic/README.md)、[答案](courses/02-inference/moe-special-topic/quiz-answers.md) |
 | 训练流程与 Agentic AI 补充 | 已基于视频摘要生成补充讲解、7 张卡片、6 道自测及答案；已区分 RLHF、DPO、GRPO、轨迹 SFT 与 Agent 强化学习，并记录 RETO / TestR-One 名称待核实；根据“概念枯燥、内容重复”的反馈，以出差助手为连续情境完成两轮修订，保留开头四版本导航表，删除正文复述和重复总结，并用四问法收束 | 尚未收到阅读或作答反馈，未验收 | [讲解](supplements/training-to-agentic-ai/README.md)、[答案](supplements/training-to-agentic-ai/quiz-answers.md) |
 | 大模型训练数据补充 | 已基于视频摘要生成补充讲解、10 张卡片、8 道自测及答案；已区分语料、预训练、SFT、偏好、RL 与蒸馏数据，补充自动化采集、书籍 OCR、数据处理、配比、参数量与 Token 量、规模单位和污染控制，并说明整本书如何按训练上下文切分、拼接和分批训练；已记录 ReCoMix、MySQL 模型等名称待核实 | 用户正在阅读；已提出数据单位、互联网采集、书籍转换和整本书输入方式等问题，并指出首节概念分类引入突兀；相关解释和章节过渡已补入正文，后续理解情况待反馈，未验收 | [讲解](supplements/llm-training-data/README.md)、[答案](supplements/llm-training-data/quiz-answers.md) |
 | 大模型推理控制补充 | 已基于视频摘要重新组织并生成补充讲解、9 张卡片、8 道自测及答案；沿一次请求区分上下文控制、Prefill/Decode、生成控制、连续批处理、KV Cache、量化与 Test-Time Scaling，并记录 IAG、WQ 名称待原视频确认 | 尚未收到阅读或作答反馈，未验收 | [讲解](supplements/llm-inference-control/README.md)、[答案](supplements/llm-inference-control/quiz-answers.md) |
+| 昇腾全栈专项 | 5 个模块正文、关系图、30 张卡片、30 道自测及答案已生成；覆盖 Atlas 硬件形态、CANN 9.1.0、训推框架、MindStudio 26.1.0 工具链与行业应用，易变信息已按 2026-09-21 官方资料核对 | 尚未开始阅读，未验收；当前为知识补充，不代表已确定昇腾实操环境 | [专项入口](supplements/ascend-special-topic/README.md) |
 | D33：实验环境是否满足推理要求 | 正文、两张图、7 张卡片、7 道自测及答案、环境盘点任务、采集脚本和当前主机报告已生成 | 尚未开始学习；当前主机已由助手只读盘点，环境路线等待用户确认 | [讲义](courses/03-inference-practice/d33-environment/README.md)、[任务](courses/03-inference-practice/d33-environment/lab.md) |
 | D34～D47：推理工程实战 | 已完成 14 章课程规划，覆盖模型基线、服务、压测、诊断、优化、多卡、可靠性和综合交付；具体讲义与实验尚未生成 | 尚未开始 | [实战规划](courses/03-inference-practice/README.md) |
+| Agent Harness 工程（LCC） | 已从旧项目迁入当前 17 章 LCC 的讲义、代码、图示、技能示例、MIT 许可证，以及 s01～s10 的自测和历史进度；固定来源提交为 `69c83c0e52969223821ad6c4a77ad5e6174ef8fe` | 旧项目记录 s01～s10 已学习，独立作答和得分未保留，掌握待复核；当前项目未复运行，下一章为 s11 Background Tasks | [课程入口](courses/04-agent-harness/README.md)、[继承进度](courses/04-agent-harness/progress.md)、[迁移说明](courses/04-agent-harness/migration-notes.md) |
 
 生成讲义不等于完成学习。只有用户反馈或作答结果支持时才更新完成情况；运行示例成功也不直接代表已理解。
 
