@@ -14,23 +14,27 @@ D28 中，调度器一轮可能同时面对长 Prompt 和正在生成的请求�
 
 ```mermaid
 flowchart LR
-    R1["第 1 轮"] --> A1["A Decode 1 Token"] --> B1["B Prefill 第 1 块"]
-    R2["第 2 轮"] --> A2["A Decode 1 Token"] --> B2["B Prefill 第 2 块"]
-    R3["第 3 轮"] --> A3["A Decode 1 Token"] --> B3["B Prefill 第 3 块"]
-    B3 --> G["B 开始 Decode"]
+    R1["第 1 轮<br/>A Decode 1 Token<br/>B Prefill 块 1"] --> R2["第 2 轮<br/>A Decode 1 Token<br/>B Prefill 块 2"]
+    R2 --> RN["……"]
+    RN --> RL["第 N 轮<br/>A Decode 1 Token<br/>B 最后一个 Prefill 块"]
+    RL --> G["B 的完整 Prompt 已处理<br/>下一轮可开始 Decode"]
 ```
 
-图是逻辑顺序示意，具体引擎可能将不同请求 Token 打包进同一次执行，而不是逐框单独启动。
+每轮处理 B 的一个块时，都会为这个块逐步写入 KV Cache；并不是等到最后一块才一次性创建全部缓存。只有第 N 轮处理完整个 Prompt 后，B 才能根据完整输入生成第一个输出 Token。图中把 A 和 B 写在同一个轮次框内，表示它们属于同一轮活动集合，不表示底层一定先运行 A 或先运行 B；推理后端可能打包执行，也可能按 Kernel 和数据布局拆分。
 
 ## 3. Token 预算怎样控制一轮工作？
 
-调度器通常设置一轮最多处理的总 Token 数。正在 Decode 的每个请求通常先占少量 Token，剩余预算用于一个或多个 Prefill 块。预算太大，单轮执行时间变长，Decode 可能抖动；预算太小，GPU 工作规模不足，长 Prompt 完成 Prefill 的轮数增多。
+调度器通常设置一轮最多处理的总 Token 数。用一组便于心算的数字说明：假设本轮预算为 2048 个 Token，已有 16 个请求各执行一步 Decode，那么它们共占 16 个 Token；若当前策略优先保证这些运行请求，剩余 2032 个 Token 可以分给一个或多个 Prefill 块。下一轮会重新计算活动集合，已经结束的请求退出，新请求或后续 Prefill 块再进入。
+
+这个例子描述的是一种常见策略，不表示所有引擎都固定让 Decode 优先。Token 预算也只是控制一轮工作量的代理：相同数量的 Prefill Token 和 Decode Token 具有不同的张量形状、访存方式与批处理效率，实际耗时未必相同。预算太大，单轮执行时间可能变长并造成 Decode 抖动；预算太小，GPU 工作规模可能不足，长 Prompt 完成 Prefill 的轮数也会增多。
 
 因此块大小不是越小越公平、也不是越大越高效。它要在 **Decode 连续性、Prefill TTFT、总体吞吐和 Kernel 效率**之间取舍。
 
 ## 4. Continuous Batching 在这里做了什么？
 
-D15 已说明连续批处理会让已完成请求退出、新请求进入。深入来看，它依赖调度器在每轮重新构造活动 Token 集合：一些 Token 属于新请求的 Prefill 块，另一些属于运行请求的单步 Decode。底层通过请求 ID、位置和 KV 块映射保证它们互不干扰。
+分块解决了 B 一次占用 GPU 太久的问题，但还没有解决另一个浪费。假设上一轮还有请求 C，这一轮开始前 C 已经生成完毕；与此同时，请求 D 刚进入队列。如果批次从建立后就固定不变，C 留下的位置只能空着，D 必须等整个旧批次结束才能加入。
+
+为了立即利用这个空位，引擎需要在每轮开始前重新检查请求状态：移除已经完成的 C，保留仍在运行的 A 和 B，再把等待中的 D 加入本轮。**这种随着请求完成和到达而逐轮重组活动请求集合的机制，称为连续批处理（Continuous Batching）**。本轮集合里可以同时有新请求的 Prefill Token、B 的后续 Prefill 块，以及 A 的单步 Decode Token；底层通过请求 ID、位置和 KV 块映射保证它们互不干扰。
 
 连续批处理回答“哪些请求进入本轮”，Chunked Prefill 回答“一个长 Prompt 本轮只进入多少 Token”。两者结合才能避免长 Prefill 长时间独占，同时维持较大的 GPU 工作批次。
 

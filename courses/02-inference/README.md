@@ -32,4 +32,8 @@ flowchart LR
 - [D31：为什么不同请求需要不同的推理配置？](d31-workload-aware-serving/README.md)
 - [D32：vLLM、SGLang 与 TensorRT-LLM 应该怎样选择？](d32-engine-selection/README.md)
 
-建议从 D18 顺序阅读。每天 4 小时时通常可安排两章，遇到显存公式、Roofline 或调度策略时可放慢；资料已生成不表示已经阅读或掌握。
+## 衔接专题：MoE 推理
+
+- [MoE 推理专题：为什么参数很多，却只计算一部分？](moe-special-topic/README.md)：路由器 → Top-k 专家 → 总参数与激活参数 → 权重/KV Cache → 专家并行与 All-to-All 通信。
+
+建议从 D18 顺序阅读。MoE 专题用于连接 D32 的引擎选型与 D33 的实战，不改变既有编号；资料已生成不表示已经阅读或掌握。
