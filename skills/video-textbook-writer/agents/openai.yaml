@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频教材写作"
+  short_description: "从已有视频证据生成中文 Markdown 教程，用贯穿例子与机制图补足推理"
+  default_prompt: "使用 $video-textbook-writer 将已有视频分析与字幕画面证据写成可独立学习的 Markdown 图文教程。"
