@@ -1,0 +1,19 @@
+{
+  "name": "learn-claude-code-typescript-companion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "s01": "node --env-file=.env --import tsx s01_agent_loop/code.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.127.0",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "tsx": "^4.23.0",
+    "typescript": "^7.0.2"
+  }
+}

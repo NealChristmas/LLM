@@ -1,0 +1,34 @@
+{
+  // 打开 LCC 章节的 code.ts 或 code.py，让它成为当前活动标签页，然后按 F5。
+  // 直接启动当前文件，断点会落在源文件中；工作目录固定为 LCC 根目录，
+  // 以便 s05 的 example/、s07/s15 的 skills/ 等相对路径能够正常解析。
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "LCC：调试当前章节 code.ts",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--import", "tsx"],
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/courses/04-agent-harness/learn-claude-code",
+      "envFile": "${workspaceFolder}/courses/04-agent-harness/learn-claude-code/.env",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "LCC：调试当前章节 code.py",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/courses/04-agent-harness/learn-claude-code",
+      "envFile": "${workspaceFolder}/courses/04-agent-harness/learn-claude-code/.env",
+      "env": {
+        "PYTHONUTF8": "1"
+      },
+      "justMyCode": true
+    }
+  ]
+}

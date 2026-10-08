@@ -1,6 +1,6 @@
 # 学习进度
 
-更新：2026-09-21。
+更新：2026-09-28。
 
 ## 已确认的学习约束
 
@@ -19,6 +19,7 @@
 
 | 项目 | 资料准备 | 学习状态 | 证据 |
 | --- | --- | --- | --- |
+| 概念辨析笔记 | 已建立独立目录；首篇已总结 vLLM、vLLM-Ascend、PyTorch、torch-npu、CANN、NVIDIA/昇腾生态与常见 PyTorch 设备名 | 由当前问答整理生成，尚未收到独立阅读反馈，不判定掌握 | [目录](supplements/concept-notes/README.md)、[首篇](supplements/concept-notes/vllm-ascend-and-hardware-backends.md) |
 | Ollama CPU 推理补充 | 说明文档与四张机制图已生成；区分 Ollama 服务、推理引擎、CPU 线程和算子 Kernel，并展开 N 层 Transformer 的 Prefill 与 Decode | 尚未收到阅读反馈，未验收 | [讲解](supplements/ollama-cpu-inference/README.md) |
 | 写作规范、教学方法、课时模板 | 已建立 | 不适用 | standards/ 与 templates/ |
 | 学习路线 | 已建立 | 尚未开始记录 | roadmap.md |

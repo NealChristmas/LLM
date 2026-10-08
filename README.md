@@ -6,6 +6,8 @@
 
 ## 入口
 
+- [外部学习来源登记](standards/external-learning-sources.md)：记录 Diy-LLM 在线讲义与代码仓库、Stanford CS336 官方材料及中文逐字稿的用途、可信度层级和后续版本固定方式。
+- [概念辨析笔记](supplements/concept-notes/README.md)：保存学习过程中形成的短篇独立说明；首篇串起 vLLM、vLLM-Ascend、PyTorch、torch-npu、CANN 与不同厂商设备后端。
 - [补充：Ollama 怎样在 CPU 上完成一次大模型推理？](supplements/ollama-cpu-inference/README.md)：沿请求进入、N 层 Transformer、CPU 线程与向量 Kernel 串起 Prefill、KV Cache 和逐 Token Decode。
 - [昇腾专项：一套 AI 任务怎样从模型落到行业系统？](supplements/ascend-special-topic/README.md)：沿硬件产品形态、CANN 基础软件、训推框架、MindStudio 工具链和行业使能建立昇腾全栈地图；官方版本信息核对至 2026-09-21。
 - [补充：同一个模型，为什么能答得更好或运行得更快？](supplements/llm-inference-control/README.md)：沿一次请求串起上下文、Prefill/Decode、生成控制、连续批处理、KV Cache、量化与 Test-Time Scaling，并区分质量、延迟、吞吐、显存和成本。
@@ -57,6 +59,7 @@
 | courses/03-inference-practice/ | D33～D47 推理部署、压测、优化与交付实战 |
 | courses/04-agent-harness/ | 从旧项目继承的 Learn Claude Code 17 章 Agent Harness 工程课程、代码、自测与进度 |
 | supplements/ascend-special-topic/ | 昇腾硬件、CANN、训推框架、MindStudio 与行业应用专项 |
+| supplements/concept-notes/ | 学习过程中形成的组件关系、概念边界与易混点短篇笔记 |
 | 每课 README.md | 连贯讲解、必要图示、章末助记卡片和自测题 |
 | 每课 quiz-answers.md | 当前快速学习自测答案 |
 | 每课 assets/ | 本地图示 |

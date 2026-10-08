@@ -20,6 +20,7 @@ Hooks run callbacks at fixed points in the agent loop:
          +---------------- tool_result ------------------+
 """
 
+import json
 import os
 import subprocess
 from pathlib import Path
@@ -197,12 +198,35 @@ register_hook("PostToolUse", large_output_hook)
 register_hook("Stop", summary_hook)
 
 
+# -- Debug helper: show the exact messages sent on each LLM round --
+
+def to_loggable(value):
+    """Convert SDK content blocks into plain Python values for JSON logging."""
+    if hasattr(value, "model_dump"):
+        return to_loggable(value.model_dump())
+    if isinstance(value, dict):
+        return {key: to_loggable(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [to_loggable(item) for item in value]
+    return value
+
+def log_messages(round_number: int, messages: list, phase: str = "request"):
+    """Print a readable snapshot without changing the conversation state."""
+    print(f"\n\033[35m[MESSAGES] round {round_number} - {phase}\033[0m")
+    print(json.dumps(to_loggable(messages), ensure_ascii=False,
+                     indent=2, default=str))
+
+
 # -- Agent loop: same structure as s03, but no hard-coded check --
 # s03: if not check_permission(block): ...
 # s04: if trigger_hooks("PreToolUse", block): ...
 
 def agent_loop(messages: list):
+    round_number = 1
     while True:
+        # This snapshot is the exact messages argument sent in this round.
+        # SYSTEM and TOOLS are separate API arguments, so they are not listed.
+        log_messages(round_number, messages)
         response = client.messages.create(
             model=MODEL, system=SYSTEM, messages=messages,
             tools=TOOLS, max_tokens=8000,
@@ -213,9 +237,12 @@ def agent_loop(messages: list):
             block for block in response.content if block.type == "tool_use"
         ]
         if not tool_calls:
+            # There will be no next request to display the final assistant turn.
+            log_messages(round_number, messages, "final state")
             force = trigger_hooks("Stop", messages)
             if force:
                 messages.append({"role": "user", "content": force})
+                round_number += 1
                 continue
             return
 
@@ -236,6 +263,7 @@ def agent_loop(messages: list):
             results.append({"type": "tool_result", "tool_use_id": block.id, "content": output})
 
         messages.append({"role": "user", "content": results})
+        round_number += 1
 
 
 if __name__ == "__main__":

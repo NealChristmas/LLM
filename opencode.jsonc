@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "opencode_mcp_demo": {
+      "type": "local",
+      "command": ["npm", "run", "start", "--silent"],
+      "cwd": "courses/04-agent-harness/opencode-mcp-demo",
+      "enabled": true,
+      "timeout": 10000
+    }
+  }
+}

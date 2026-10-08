@@ -529,6 +529,26 @@ def execute_tool(block) -> str:
     return str(output)
 
 
+# -- Debug helper: show the complete conversation after the agent stops --
+
+def to_loggable(value):
+    """Convert SDK content blocks into plain Python values for JSON logging."""
+    if hasattr(value, "model_dump"):
+        return to_loggable(value.model_dump())
+    if isinstance(value, dict):
+        return {key: to_loggable(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [to_loggable(item) for item in value]
+    return value
+
+
+def log_messages(messages: list):
+    """Print the complete history without changing the conversation state."""
+    print("\n\033[35m[MESSAGES] complete history\033[0m")
+    print(json.dumps(to_loggable(messages), ensure_ascii=False,
+                     indent=2, default=str))
+
+
 # -- Agent loop --
 
 def agent_loop(messages: list):
@@ -550,6 +570,7 @@ def agent_loop(messages: list):
             if force:
                 messages.append({"role": "user", "content": force})
                 continue
+            log_messages(messages)
             return
 
         results = []
@@ -578,8 +599,6 @@ if __name__ == "__main__":
         trigger_hooks("UserPromptSubmit", query)
         history.append({"role": "user", "content": query})
         agent_loop(history)
-        print("\n\033[90m[HISTORY]\033[0m")
-        print(history)
         for block in history[-1]["content"]:
             if getattr(block, "type", None) == "text":
                 print(block.text)

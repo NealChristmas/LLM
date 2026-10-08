@@ -277,6 +277,25 @@ register_hook("PostToolUse", large_output_hook)
 register_hook("Stop", summary_hook)
 
 
+# -- Debug helper: show the complete conversation after the agent stops --
+
+def to_loggable(value):
+    """Convert SDK content blocks into plain Python values for JSON logging."""
+    if hasattr(value, "model_dump"):
+        return to_loggable(value.model_dump())
+    if isinstance(value, dict):
+        return {key: to_loggable(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [to_loggable(item) for item in value]
+    return value
+
+def log_messages(messages: list):
+    """Print the complete history without changing the conversation state."""
+    print("\n\033[35m[MESSAGES] complete history\033[0m")
+    print(json.dumps(to_loggable(messages), ensure_ascii=False,
+                     indent=2, default=str))
+
+
 # -- Agent loop with the reminder counter --
 
 def agent_loop(messages: list):
@@ -296,6 +315,7 @@ def agent_loop(messages: list):
             if force:
                 messages.append({"role": "user", "content": force})
                 continue
+            log_messages(messages)
             return
 
         results = []
