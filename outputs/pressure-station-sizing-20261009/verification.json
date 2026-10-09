@@ -1,0 +1,66 @@
+[
+  {
+    "name": "capacity valid",
+    "actual": "参数有效"
+  },
+  {
+    "name": "planned concurrency",
+    "actual": 10
+  },
+  {
+    "name": "performance replicas",
+    "actual": 2
+  },
+  {
+    "name": "procurement cards",
+    "actual": 3
+  },
+  {
+    "name": "missing model identity blocks procurement",
+    "actual": "待补齐参数与压测"
+  },
+  {
+    "name": "whole replica packing",
+    "actual": 4
+  },
+  {
+    "name": "auxiliary server separation",
+    "actual": 5
+  },
+  {
+    "name": "cross server replica blocked",
+    "actual": "请补齐或修正黄色容量参数"
+  },
+  {
+    "name": "text input blocks without formula error",
+    "actual": "请补齐或修正黄色容量参数"
+  },
+  {
+    "name": "text benchmark blocks without formula error",
+    "actual": "待填写有效压测报告"
+  },
+  {
+    "name": "failed latency blocks procurement",
+    "actual": "待补齐参数与压测"
+  },
+  {
+    "name": "compatibility blocks procurement",
+    "actual": "待补齐参数与压测"
+  },
+  {
+    "name": "insufficient group memory",
+    "actual": 0
+  },
+  {
+    "name": "insufficient group blocks procurement",
+    "actual": "待补齐参数与压测"
+  },
+  {
+    "name": "custom KV supports missing standard fields",
+    "actual": "参数有效"
+  },
+  {
+    "name": "blank customer fields block procurement",
+    "actual": "待补齐参数与压测"
+  }
+]
