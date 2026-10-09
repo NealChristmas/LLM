@@ -62,5 +62,45 @@
   {
     "name": "blank customer fields block procurement",
     "actual": "待补齐参数与压测"
+  },
+  {
+    "name": "rough default budget without benchmark",
+    "actual": 4
+  },
+  {
+    "name": "rough default per replica cards",
+    "actual": 1
+  },
+  {
+    "name": "rough 70B automatic four card group",
+    "actual": 4
+  },
+  {
+    "name": "rough 70B budget cards",
+    "actual": 16
+  },
+  {
+    "name": "rough peak rate drives budget",
+    "actual": 37
+  },
+  {
+    "name": "rough concurrency drives budget",
+    "actual": 31
+  },
+  {
+    "name": "rough zero spare preserved",
+    "actual": 3
+  },
+  {
+    "name": "rough missing demand invalidates budget",
+    "actual": "请填写有效数值"
+  },
+  {
+    "name": "rough text capability invalidates budget",
+    "actual": "请填写有效数值"
+  },
+  {
+    "name": "rough defaults restored",
+    "actual": 4
   }
 ]

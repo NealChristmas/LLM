@@ -1,14 +1,14 @@
 import fs from 'node:fs/promises';
 import {Workbook,SpreadsheetFile} from '@oai/artifact-tool';
 const dir=new URL('.',import.meta.url).pathname.replace(/^\/([A-Za-z]:)/,'$1');
-const w=Workbook.create(), s=w.worksheets.add('填写与核算'), h=w.worksheets.add('硬件与依据');
-for(const sh of [s,h]){sh.showGridLines=false;sh.getRange('A1:D85').format.font={name:'Arial',size:11,color:'#243247'};sh.getRange('A1:D85').format.rowHeight=32;sh.getRange('A1:D85').format.verticalAlignment='center';sh.getRange('A1:A85').format.columnWidth=40;sh.getRange('B1:B85').format.columnWidth=29;sh.getRange('C1:C85').format.columnWidth=13;sh.getRange('D1:D85').format.columnWidth=86;sh.getRange('D1:D85').format.wrapText=true;}
+const w=Workbook.create(), rough=w.worksheets.add('粗略估算'), s=w.worksheets.add('填写与核算'), h=w.worksheets.add('硬件与依据');
+for(const sh of [rough,s,h]){sh.showGridLines=false;sh.getRange('A1:D85').format.font={name:'Arial',size:11,color:'#243247'};sh.getRange('A1:D85').format.rowHeight=32;sh.getRange('A1:D85').format.verticalAlignment='center';sh.getRange('A1:A85').format.columnWidth=40;sh.getRange('B1:B85').format.columnWidth=29;sh.getRange('C1:C85').format.columnWidth=13;sh.getRange('D1:D85').format.columnWidth=86;sh.getRange('D1:D85').format.wrapText=true;}
 const val=(r,a,b,c,d)=>s.getRange(`A${r}:D${r}`).values=[[a,b,c,d]];
 const fx=(r,f)=>s.getRange(`B${r}`).formulas=[[f]];
 const band=(r,text)=>{val(r,text,null,null,null);s.getRange(`A${r}:D${r}`).format.fill='#263F60';s.getRange(`A${r}:D${r}`).format.font={bold:true,color:'#FFFFFF'};};
 const input=(r,a,b,c,d)=>{val(r,a,b,c,d);s.getRange(`B${r}`).format.fill='#FFF0BF';s.getRange(`B${r}`).format.font.color='#174B91';};
 val(2,'调压站智能体计算卡核算',null,null,'核对日期：2026-10-09。适用于本地大模型推理，不含训练资源。');s.getRange('A2').format.font={size:16,bold:true};
-val(3,'填写黄色单元格',null,null,'客户填业务需求，研发填模型与部署参数，供应商填同配置压测数据。空白业务参数没有预设客户数据。');
+val(3,'详细核算（可选）',null,null,'初步预算请使用第一张“粗略估算”。本页保留具体模型参数和同配置压测核算，不影响粗估结果。');
 band(5,'自动核算结果');
 val(6,'容量下限（主模型物理卡）',null,'张','按显存能容纳的并发计算。尚未验证速度，不含备用与辅助模型。');fx(6,'=IF(ISNUMBER(B63),B63*B36,"待填写容量参数")');
 val(7,'采购规划数量（物理卡）',null,'张','性能证据完整时计算：工作副本 + 在线备用副本 + 额外模型用卡。');fx(7,'=IF(ISNUMBER(B69),B69,"待补齐参数与压测")');
@@ -101,6 +101,61 @@ const sources=[
 ['硬件销售核对','卡与模组不可混用采购口径','填写指引','Atlas 800I 等整机常使用集成模组。若采购整机，按报价 BOM 明确设备数、模组数与整机台数；不要把模组数称作可单独购买的 PCIe 卡数。']
 ];
 h.getRange('A4:D15').values=sources;h.getRange('A4:D4').format.fill='#263F60';h.getRange('A4:D4').format.font={bold:true,color:'#FFFFFF'};h.getRange('A5:D15').format.wrapText=true;h.getRange('A5:D15').format.rowHeight=66;h.getRange('B5:B15').format.fill='#F1F4F8';h.freezePanes.freezeRows(4);
+h.getRange('A18').values=[['粗估默认值（本表预算假设，未实测）']];
+h.getRange('A19:D23').values=[['模型参数档位','总参数量（B）','KV预算（KiB/Token）','说明'],['7B',7,128,'通用结构预算，不绑定某个实际模型'],['14B',14,160,'默认档位，不代表模型选型结论'],['32B',32,320,'参数与KV档位同时随选择变化'],['70B',70,512,'不适用于总参数大于此档位的MoE或特殊缓存结构']];
+h.getRange('A25:D31').values=[['共同内存假设','值','单位','说明'],['权重字节数',2,'Byte/参数','按FP16/BF16，不要求客户了解量化'],['权重额外占用',0.1,'比例','覆盖未单列的权重开销'],['设备内存可用比例',0.85,'比例','设备余量，与运行时工作区分别计入'],['每芯片运行时预算',6,'GiB','简化占位预算，未实测'],['KV额外系数',1.2,'倍','缓存块、复制等额外占用的简化余量'],['默认能力假设','4路 / 10次模型调用每分钟','每副本','人为预算假设，不是华为保证的性能；使用者可在粗估页修改']];
+for(const row of [19,25]){h.getRange(`A${row}:D${row}`).format.fill='#263F60';h.getRange(`A${row}:D${row}`).format.font={bold:true,color:'#FFFFFF'};}
+h.getRange('A19:D31').format.wrapText=true;h.getRange('A19:D31').format.rowHeight=42;h.getRange('A31:D31').format.rowHeight=60;h.getRange('B27:B28').setNumberFormat('0%');
+const rv=(row,a,b,c,d)=>rough.getRange(`A${row}:D${row}`).values=[[a,b,c,d]];
+const rf=(row,f)=>rough.getRange(`B${row}`).formulas=[[f]];
+const rb=(row,a)=>{rv(row,a,null,null,null);rough.getRange(`A${row}:D${row}`).format.fill='#263F60';rough.getRange(`A${row}:D${row}`).format.font={bold:true,color:'#FFFFFF'};};
+const ri=(row,a,b,c,d,customer=false)=>{rv(row,a,b,c,d);rough.getRange(`B${row}`).format.fill=customer?'#FFF0BF':'#EAF1F8';rough.getRange(`B${row}`).format.font.color='#174B91';};
+rv(2,'调压站智能体计算卡粗估',null,null,'版本2.0。所有输入已预填，改两项业务规模即可。适用于初步预算。');rough.getRange('A2').format.font={size:16,bold:true};
+rv(3,'黄色填业务，蓝色可用默认',null,null,'默认规模只是示例。无须模型结构参数或压测报告，结果使用下方可修改的能力假设。');
+rb(5,'自动估算结果');
+rv(6,'初步预算计算卡数',null,'张','含主模型工作卡、默认1组在线备用及单列辅助卡。按假设估算，不代表实测能力。');rf(6,'=IF(B31="参数有效",B41,"请填写有效数值")');
+rv(7,'主模型工作卡数',null,'张','工作副本数 × 每副本卡数，不含备用。');rf(7,'=IF(B31="参数有效",B40*B37,"待填写")');
+rv(8,'每个模型副本使用卡数',null,'张','按内存预算自动估算为1、2、4、8等卡分组，实际并行支持仍须选型时确认。');rf(8,'=IF(B31="参数有效",B37,"待填写")');
+rv(9,'服务器装箱规划',null,'台','主模型按完整副本装箱，辅助卡另配服务器。若要求整机容灾，另做故障域规划。');rf(9,'=IF(B31="参数有效",B42,"待填写")');
+rv(10,'估算口径',null,null,'4路并发、每分钟10次模型调用是可修改的预算占位假设，未经过华为硬件实测。');rf(10,'=IF(B31="参数有效","初步预算估算，默认能力未实测",B31)');rough.getRange('B10').format.wrapText=true;
+rb(12,'客户优先调整这两项，其余可先用默认值');
+ri(13,'项目名称','调压站智能体','文本','可修改，不参与计算。');
+ri(14,'高峰同时处理的任务数',10,'个','业务任务并发。默认同一任务内模型调用依次执行；若有并行分支，请按同时调用数折算。',true);
+ri(15,'高峰每分钟业务请求数',2,'次/分钟','告警诊断、问答、报告等总请求。未知时可先保留2，结果只代表该示例规模。',true);
+rb(17,'默认配置（不熟悉时可以保留，知道实际情况再改）');
+ri(18,'模型参数档位','14B','选项','7B、14B、32B、70B，默认14B是预算场景。具体模型与质量另行选型。');
+ri(19,'单次调用总上下文长度',5120,'Token','默认输入4096 + 输出1024，含历史、规程材料与工具返回。');
+ri(20,'每个业务的模型调用次数',3,'次','默认依次进行分析、工具后再分析、回答等3次调用；重试如需计入也加到这里。');
+ri(21,'每副本规划活动并发',4,'路','预算假设，未实测；不会因卡数增加而自动提高。');
+ri(22,'每副本规划模型调用吞吐',10,'次/分钟','预算假设，未实测；与上项一起约束副本数，知道供应商能力时直接替换。');
+ri(23,'每张物理卡总内存',64,'GB','默认64GB级单芯片卡预算场景。按十进制GB换算，双芯片卡需同时修改下一项。');
+ri(24,'每张物理卡芯片数',1,'个','默认1；Duo为2，填的是整卡总内存，不把双芯片当成连续内存。');
+ri(25,'业务增长余量',0.2,'比例','默认20%，同时增加并发与请求量。');
+ri(26,'在线备用模型副本',1,'组','默认1。不要求备用可改0，备用不自动保证整机容灾。');
+ri(27,'辅助服务额外计算卡',0,'张','默认Embedding/Reranker走CPU或不另占卡。独立视觉、语音等用卡在此追加。');
+ri(28,'每台服务器允许装卡数',8,'张','仅用于服务器数量估算，最终按机箱、互联和整机BOM确认。');
+rb(30,'自动计算过程（无须填写）');
+rv(31,'输入检查',null,null,'核心数值无效时不输出预算数量。业务规模允许0，模型服务仍至少常驻1组。');
+const roughNums=[14,15,19,20,21,22,23,24,25,26,27,28];
+const roughInts=[14,19,21,24,26,27,28];
+rf(31,`=IF(OR(${roughNums.map(i=>`NOT(ISNUMBER(B${i}))`).join(',')}),"请填写有效数值",IF(OR(B14<0,B15<0,MIN(B19:B24)<=0,B25<0,B26<0,B27<0,B28<1,${roughInts.map(i=>`B${i}<>INT(B${i})`).join(',')},B23*10^9/2^30*'硬件与依据'!B28-'硬件与依据'!B29*B24<=0),"请修正数值范围",IF(OR(B18="7B",B18="14B",B18="32B",B18="70B"),"参数有效","请选择有效模型档位")))`);
+rv(32,'模型总参数量',null,'B','跟随模型档位，不要求填写层数、头数。');rf(32,'=IF(B31="参数有效",INDEX(\'硬件与依据\'!B20:B23,MATCH(B18,\'硬件与依据\'!A20:A23,0)),"待填写")');
+rv(33,'每Token KV粗估预算',null,'KiB','通用档位假设，可在“硬件与依据”修改。不是具体模型的配置参数。');rf(33,'=IF(B31="参数有效",INDEX(\'硬件与依据\'!C20:C23,MATCH(B18,\'硬件与依据\'!A20:A23,0)),"待填写")');
+rv(34,'单副本权重内存',null,'GiB','参数 × 2字节 × 1.1，按FP16/BF16预留10%开销。');rf(34,'=IF(B31="参数有效",B32*10^9*\'硬件与依据\'!B26*(1+\'硬件与依据\'!B27)/2^30,"待填写")');
+rv(35,'单序列KV缓存',null,'GiB','每Token预算 × 上下文长度，再预留20%缓存开销。');rf(35,'=IF(B31="参数有效",B33*1024*B19*\'硬件与依据\'!B30/2^30,"待填写")');
+rv(36,'每卡扣除运行时后的内存',null,'GiB','整卡GB转换GiB × 85% − 每芯片6GiB运行时预算。');rf(36,'=IF(B31="参数有效",B23*10^9/2^30*\'硬件与依据\'!B28-\'硬件与依据\'!B29*B24,"待填写")');
+rv(37,'每副本分组卡数',null,'张','权重 + 规划并发KV，除以每卡内存，向上取1、2、4、8等；预算上假设可切分。');rf(37,'=IF(B31="参数有效",2^ROUNDUP(LOG(MAX(1,(B34+B35*B21)/B36),2),0),"待填写")');
+rv(38,'规划活动并发',null,'路','高峰任务数 × 1.2，向上取整，默认无任务内并行。');rf(38,'=IF(B31="参数有效",ROUNDUP(B14*(1+B25),0),"待填写")');
+rv(39,'规划模型调用量',null,'次/分钟','高峰业务请求数 × 每业务调用次数 × (1 + 增长余量)。');rf(39,'=IF(B31="参数有效",B15*B20*(1+B25),"待填写")');
+rv(40,'工作副本数',null,'组','取并发约束与调用量约束中较大值，至少保留1组常驻服务。');rf(40,'=IF(B31="参数有效",MAX(1,ROUNDUP(B38/B21,0),ROUNDUP(B39/B22,0)),"待填写")');
+rv(41,'预算物理卡总数',null,'张','(工作副本 + 在线备用) × 每副本卡数 + 辅助卡。');rf(41,'=IF(B31="参数有效",(B40+B26)*B37+B27,"待填写")');
+rv(42,'服务器数量估算',null,'台','副本须在单台内，主模型与辅助卡分开装箱；容灾隔离可增加台数。');rf(42,'=IF(B31<>"参数有效","待填写",IF(B37>B28,"需更大机箱或跨机方案",ROUNDUP((B40+B26)/ROUNDDOWN(B28/B37,0),0)+ROUNDUP(B27/B28,0)))');
+rv(44,'估算边界',null,null,'用于前期预算，不要求压测。70B以上总参数、特殊KV、多模态主模型、跨机并行应单独核算；详细核算页可选用。');
+rough.getRange('B6:B9').format.fill='#E2ECF7';rough.getRange('B6:B9').format.font={bold:true,size:14};rough.getRange('B31:B42').format.fill='#EDF0F4';rough.getRange('B31:B42').format.wrapText=true;rough.getRange('A44:D44').format.rowHeight=54;
+rough.getRange('B25').setNumberFormat('0%');for(const i of [34,35,36,39])rough.getRange(`B${i}`).setNumberFormat('0.0');
+rough.getRange('B18').dataValidation={rule:{type:'list',values:['7B','14B','32B','70B']}};
+for(const i of roughNums)rough.getRange(`B${i}`).dataValidation={rule:{type:'decimal',operator:'between',formula1:0,formula2:1000000}};
+rough.freezePanes.freezeRows(3);
 for(const r of [72,73,74])s.getRange(`A${r}:D${r}`).format.rowHeight=52;
 // Type guards run before integer arithmetic, including pasted text that bypasses Excel validation.
 const numeric=[...req,19,27,41,42,43];
@@ -124,9 +179,20 @@ s.getRange('B38').values=[[1]];w.recalculate();check('insufficient group memory'
 s.getRange('B28').values=[['自定义']];s.getRange('B33').values=[[131072]];s.getRange('B29').values=[[null]];w.recalculate();check('custom KV supports missing standard fields',54,'参数有效');s.getRange('B28').values=[['标准MHA/GQA']];s.getRange('B33').values=[[null]];
 for(const[r,v]of old)s.getRange(`B${r}`).values=[[v??null]];
 w.recalculate();check('blank customer fields block procurement',7,'待补齐参数与压测');
+const roughDefaults=new Map(roughNums.concat(18).map(i=>[i,rough.getRange(`B${i}`).values[0][0]]));
+function roughCheck(name,row,expected){const actual=rough.getRange(`B${row}`).values[0][0];if(actual!==expected)throw Error(`${name}: ${actual} != ${expected}`);tests.push({name,actual});}
+roughCheck('rough default budget without benchmark',6,4);roughCheck('rough default per replica cards',8,1);
+rough.getRange('B18').values=[['70B']];w.recalculate();roughCheck('rough 70B automatic four card group',8,4);roughCheck('rough 70B budget cards',6,16);rough.getRange('B18').values=[['14B']];
+rough.getRange('B15').values=[[100]];w.recalculate();roughCheck('rough peak rate drives budget',6,37);rough.getRange('B15').values=[[2]];
+rough.getRange('B14').values=[[100]];w.recalculate();roughCheck('rough concurrency drives budget',6,31);rough.getRange('B14').values=[[10]];
+rough.getRange('B26').values=[[0]];w.recalculate();roughCheck('rough zero spare preserved',6,3);rough.getRange('B26').values=[[1]];
+rough.getRange('B14').values=[[null]];w.recalculate();roughCheck('rough missing demand invalidates budget',6,'请填写有效数值');rough.getRange('B14').values=[[10]];
+rough.getRange('B22').values=[['文字']];w.recalculate();roughCheck('rough text capability invalidates budget',6,'请填写有效数值');
+for(const[i,v]of roughDefaults)rough.getRange(`B${i}`).values=[[v]];
+w.recalculate();roughCheck('rough defaults restored',6,4);
 await fs.writeFile(dir+'verification.json',JSON.stringify(tests,null,2));
-console.log((await w.inspect({kind:'table',range:'填写与核算!A6:C9',include:'values,formulas',tableMaxRows:4,tableMaxCols:3})).ndjson);
+console.log((await w.inspect({kind:'table',range:'粗略估算!A6:C10',include:'values,formulas',tableMaxRows:5,tableMaxCols:3})).ndjson);
 console.log((await w.inspect({kind:'match',searchTerm:'#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!',options:{useRegex:true,maxResults:20}})).ndjson);
-for(const [sheetName,range,name]of [['填写与核算','A1:D21','preview-main'],['填写与核算','A23:D52','preview-inputs'],['填写与核算','A53:D74','preview-calculation'],['硬件与依据','A1:D15','preview-sources']]){const p=await w.render({sheetName,range,scale:1,format:'png'});await fs.writeFile(dir+name+'.png',new Uint8Array(await p.arrayBuffer()));}
+for(const [sheetName,range,name]of [['粗略估算','A1:D28','preview-main'],['粗略估算','A30:D44','preview-rough-calculation'],['填写与核算','A1:D21','preview-detailed'],['填写与核算','A23:D52','preview-inputs'],['填写与核算','A53:D74','preview-calculation'],['硬件与依据','A1:D15','preview-sources'],['硬件与依据','A18:D31','preview-defaults']]){const p=await w.render({sheetName,range,scale:1,format:'png'});await fs.writeFile(dir+name+'.png',new Uint8Array(await p.arrayBuffer()));}
 const out=await SpreadsheetFile.exportXlsx(w);await out.save(dir+'调压站智能体-华为计算卡自动核算.xlsx');
 console.log('Exported workbook and completed '+tests.length+' checks');
