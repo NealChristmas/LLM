@@ -6,6 +6,8 @@
 
 ## 入口
 
+- [LLM容量理论评估 V2](skills/llm-capacity-sizing-v2/SKILL.md)：仅理论测算，支持多布局比较；[本次客户报告](outputs/capacity-v2-theory-20261020/report.client.md)含前置流程图、计算依据和[独立交付包](outputs/capacity-v2-theory-20261020/customer-delivery.zip)。
+
 - [调压站智能体华为计算卡估算表与规则](outputs/pressure-station-sizing-20261009/README.md)：默认值已预填，优先修改峰值任务数与请求量即可粗估预算卡数；附 Markdown 规则与可选详细核算。
 - [外部学习来源登记](standards/external-learning-sources.md)：记录 Diy-LLM 在线讲义与代码仓库、Stanford CS336 官方材料及中文逐字稿的用途、可信度层级和后续版本固定方式。
 - [概念辨析笔记](supplements/concept-notes/README.md)：保存学习过程中形成的短篇独立说明；首篇串起 vLLM、vLLM-Ascend、PyTorch、torch-npu、CANN 与不同厂商设备后端。

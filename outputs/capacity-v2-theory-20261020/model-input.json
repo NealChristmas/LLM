@@ -1,0 +1,57 @@
+{
+  "identity": {
+    "modelRevision": "314113f8a7dadb388215396ba5fbee2c610a04d6",
+    "configSha256": "8be45ce0476004a3f529fd896115a4a2e800a129ad2d3ec05b16050f52e21879",
+    "referenceDeployRevision": "f03228c14a127af809a232c2bc99ec935ff6be63",
+    "cardUnit": "physical_card"
+  },
+  "sourceCheckpointGroups": {
+    "vision_and_aligner": {
+      "tensorCount": 263,
+      "nativePayloadBytes": 970506240,
+      "quantMetadataBytes": 0,
+      "logicalTensorElements": 485253120
+    },
+    "main_other": {
+      "tensorCount": 1257,
+      "nativePayloadBytes": 9846779328,
+      "quantMetadataBytes": 6676480,
+      "logicalTensorElements": 8299052144
+    },
+    "main_routed_experts": {
+      "tensorCount": 92160,
+      "nativePayloadBytes": 288777830400,
+      "quantMetadataBytes": 16986931200,
+      "logicalTensorElements": 543581798400
+    },
+    "draft_other": {
+      "tensorCount": 97,
+      "nativePayloadBytes": 713428872,
+      "quantMetadataBytes": 551424,
+      "logicalTensorElements": 635817570
+    },
+    "draft_routed_experts": {
+      "tensorCount": 2304,
+      "nativePayloadBytes": 7219445760,
+      "quantMetadataBytes": 424673280,
+      "logicalTensorElements": 13589544960
+    },
+    "engram_tables": {
+      "tensorCount": 4,
+      "nativePayloadBytes": 202758032400,
+      "quantMetadataBytes": 6144182800,
+      "logicalTensorElements": 196613849600
+    }
+  },
+  "activeParameters": {
+    "prefill": 8000000000,
+    "decode": 16000000000
+  },
+  "provenance": {
+    "structuralSummary": "sources/structure-summary.json",
+    "summarySha256": "8312d3b336061c47f3decacd7d8cf7083ef8b1a87a14f206a8467f0abf4463c2",
+    "modelManifest": "sources/model/manifest.json",
+    "deploymentManifest": "sources/deployment/manifest.json",
+    "parameterScope": "Official rounded stage-active parameters; not complete FLOP"
+  }
+}

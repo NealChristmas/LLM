@@ -1,0 +1,16 @@
+{
+  "numericalTestsPassed": 3,
+  "checks": [
+    "input config hash",
+    "request and algorithm identity",
+    "card-local uniform partition budget",
+    "source data does not include measured performance",
+    "Markdown links",
+    "SVG XML",
+    "terminology"
+  ],
+  "visualPreviewPerformed": true,
+  "visualPreviewMethod": "local System.Drawing raster checked with image viewer",
+  "hardwareTestsRun": false,
+  "resultSha256": "81872a99d4a4b22ab02c24ffcebf7b4007d5591310da9d6bbb790974ab4c55d9"
+}

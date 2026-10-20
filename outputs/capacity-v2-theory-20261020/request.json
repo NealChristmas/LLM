@@ -1,0 +1,21 @@
+{
+  "model": "DeepSeek-V4.1-Flash",
+  "inputTokens": 8000,
+  "outputTokens": 1000,
+  "lengthStatistic": "mean",
+  "allReasoningTokensIncluded": true,
+  "concurrency": 60,
+  "ttftMs": 3000,
+  "tpotMs": 50,
+  "latencyStatistic": "mean",
+  "load": "balanced_burst_fcfs",
+  "prefixHitPercent": 0,
+  "hardware": "A3-560T",
+  "weightQuant": "W8A8",
+  "kvQuant": "INT8_hypothetical",
+  "framework": "vLLM Ascend v0.30.0rc1",
+  "deployment": "PD separated",
+  "growthPercent": 0,
+  "spareGroups": 0,
+  "scope": "fixed_reference_layout_only"
+}

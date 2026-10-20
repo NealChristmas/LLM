@@ -2,6 +2,8 @@
 
 本目录保存课程资料制作过程中使用的Codex Skill 源码，便于版本管理、审查和在其他环境中复用。仓库内副本不表示已经自动安装；需要使用时，将对应目录放入 Codex 的 skills 目录。
 
+- [llm-capacity-sizing-v2](llm-capacity-sizing-v2/SKILL.md)：仅理论评估，按模型结构与部署逐布局重算比较，生成Markdown报告、依据附录和流程图。
+
 - [learning-material-writing](learning-material-writing/SKILL.md)：编写中文技术学习资料，控制概念引入、推理链、公式、图示和练习闭环。
 - [learning-material-review](learning-material-review/SKILL.md)：审查正确性、教学连贯性、跨章重复、认知负荷、练习一致性与 Markdown 格式。
 

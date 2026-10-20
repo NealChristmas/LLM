@@ -1,0 +1,48 @@
+{
+  "repository": "vllm-project/vllm-ascend",
+  "revision": "f03228c14a127af809a232c2bc99ec935ff6be63",
+  "ref": "releases/v0.30.0",
+  "scope": "Selected local source snapshots for this report; other source links within originals are not bundled.",
+  "files": [
+    {
+      "path": "docs/source/tutorials/models/DeepSeek-V4.1-Flash.md",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm-ascend/f03228c14a127af809a232c2bc99ec935ff6be63/docs/source/tutorials/models/DeepSeek-V4.1-Flash.md",
+      "bytes": 70613,
+      "sha256": "861d8308b33e14bcd84b369ca390c51cf2c36d3e42ac752017f223bb4297bb2f",
+      "status": "downloaded",
+      "localPath": "docs/source/tutorials/models/DeepSeek-V4.1-Flash.md.source.txt"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm-ascend/f03228c14a127af809a232c2bc99ec935ff6be63/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "status": "downloaded",
+      "localPath": "LICENSE"
+    },
+    {
+      "path": "vllm_ascend/models/deepseek_v41/cache_config.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm-ascend/f03228c14a127af809a232c2bc99ec935ff6be63/vllm_ascend/models/deepseek_v41/cache_config.py",
+      "sha256": "467dddca82e2528ebbec14c78682486a39bffb4f096675d8b1d2d140f1a7014b",
+      "bytes": 10561,
+      "status": "downloaded",
+      "localPath": "vllm_ascend/models/deepseek_v41/cache_config.py"
+    },
+    {
+      "path": "vllm_ascend/models/deepseek_v41/indexer.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm-ascend/f03228c14a127af809a232c2bc99ec935ff6be63/vllm_ascend/models/deepseek_v41/indexer.py",
+      "sha256": "d5d6a438bbced4e63d729dac94c08869df30dab4a71ceacecdea211386b3db33",
+      "bytes": 11193,
+      "status": "downloaded",
+      "localPath": "vllm_ascend/models/deepseek_v41/indexer.py"
+    },
+    {
+      "path": "vllm_ascend/core/kv_cache_interface.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm-ascend/f03228c14a127af809a232c2bc99ec935ff6be63/vllm_ascend/core/kv_cache_interface.py",
+      "sha256": "9eb012b6582654000185467b58221dd2628176dc6661d6af1e6d3070a2bc0d03",
+      "bytes": 19078,
+      "status": "downloaded",
+      "localPath": "vllm_ascend/core/kv_cache_interface.py"
+    }
+  ]
+}

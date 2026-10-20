@@ -1,0 +1,302 @@
+{
+  "method": "DeepSeek-V4.1 model-specific W8 + hypothetical INT8 cache theory/2.0",
+  "evaluationScope": "one fixed reference layout, not a global minimum search",
+  "plannedConcurrency": 60,
+  "inputWorkTopPerRequest": 128.0,
+  "decodeWorkTopPerToken": 0.032,
+  "meanPrefillCompletionOrder": 8.0,
+  "targetDataGroups": {
+    "expertW8Bytes": 557171343360,
+    "denseRetainedBytes": 10552980296,
+    "visionRetainedBytes": 970506240
+  },
+  "cache": {
+    "ownerLayers": [
+      2,
+      8,
+      14,
+      20
+    ],
+    "compressionRatios": [
+      2,
+      2,
+      2,
+      1
+    ],
+    "positionMultiplier": 2.5,
+    "hypotheticalGlobalBytesPerToken": 1615.0,
+    "hypotheticalFixedSlidingBytes": 2840064,
+    "logicalBytesPerRequest": 17375064.0,
+    "budgetBytesPerRequest": 21718830.0,
+    "implementationVerified": false
+  },
+  "hostEngramBudgetGiBPerNode": 201.42200827598575,
+  "scenarios": [
+    {
+      "assumption": {
+        "name": "较高效率假设",
+        "prefillEfficiency": 0.5,
+        "decodeEfficiency": 0.03
+      },
+      "phase": {
+        "prefill": {
+          "physicalCards": 8,
+          "inferenceInstances": 4,
+          "busyRequestsPerInstance": 15,
+          "effectiveTopsPerInstance": 1120.0,
+          "cardWeightGiB": 80.36527256634086,
+          "cardCacheGiB": 0.6068171001970768,
+          "cardRuntimeGiB": 16,
+          "cardTotalGiB": 96.97208966653794,
+          "cardCapacityGiB": 119.20928955078125,
+          "cardLocalCapacityWithinAssumption": true,
+          "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+        },
+        "decode": {
+          "physicalCards": 8,
+          "inferenceInstances": 8,
+          "busyRequestsPerInstance": 8,
+          "effectiveTopsPerInstance": 33.6,
+          "cardWeightGiB": 87.39245614342393,
+          "cardCacheGiB": 0.3236357867717743,
+          "cardRuntimeGiB": 16,
+          "cardTotalGiB": 103.7160919301957,
+          "cardCapacityGiB": 119.20928955078125,
+          "cardLocalCapacityWithinAssumption": true,
+          "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+        }
+      },
+      "meanTtftBudgetMs": 1214.2857142857142,
+      "busyDecodeStepBudgetMs": 11.523809523809524,
+      "withinModeledConstraints": true
+    },
+    {
+      "assumption": {
+        "name": "中心预算假设",
+        "prefillEfficiency": 0.4,
+        "decodeEfficiency": 0.02
+      },
+      "phase": {
+        "prefill": {
+          "physicalCards": 8,
+          "inferenceInstances": 4,
+          "busyRequestsPerInstance": 15,
+          "effectiveTopsPerInstance": 896.0,
+          "cardWeightGiB": 80.36527256634086,
+          "cardCacheGiB": 0.6068171001970768,
+          "cardRuntimeGiB": 16,
+          "cardTotalGiB": 96.97208966653794,
+          "cardCapacityGiB": 119.20928955078125,
+          "cardLocalCapacityWithinAssumption": true,
+          "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+        },
+        "decode": {
+          "physicalCards": 8,
+          "inferenceInstances": 8,
+          "busyRequestsPerInstance": 8,
+          "effectiveTopsPerInstance": 22.400000000000002,
+          "cardWeightGiB": 87.39245614342393,
+          "cardCacheGiB": 0.3236357867717743,
+          "cardRuntimeGiB": 16,
+          "cardTotalGiB": 103.7160919301957,
+          "cardCapacityGiB": 119.20928955078125,
+          "cardLocalCapacityWithinAssumption": true,
+          "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+        }
+      },
+      "meanTtftBudgetMs": 1442.857142857143,
+      "busyDecodeStepBudgetMs": 16.285714285714285,
+      "withinModeledConstraints": true
+    },
+    {
+      "assumption": {
+        "name": "较低效率假设",
+        "prefillEfficiency": 0.3,
+        "decodeEfficiency": 0.01
+      },
+      "phase": {
+        "prefill": {
+          "physicalCards": 8,
+          "inferenceInstances": 4,
+          "busyRequestsPerInstance": 15,
+          "effectiveTopsPerInstance": 672.0,
+          "cardWeightGiB": 80.36527256634086,
+          "cardCacheGiB": 0.6068171001970768,
+          "cardRuntimeGiB": 16,
+          "cardTotalGiB": 96.97208966653794,
+          "cardCapacityGiB": 119.20928955078125,
+          "cardLocalCapacityWithinAssumption": true,
+          "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+        },
+        "decode": {
+          "physicalCards": 8,
+          "inferenceInstances": 8,
+          "busyRequestsPerInstance": 8,
+          "effectiveTopsPerInstance": 11.200000000000001,
+          "cardWeightGiB": 87.39245614342393,
+          "cardCacheGiB": 0.3236357867717743,
+          "cardRuntimeGiB": 16,
+          "cardTotalGiB": 103.7160919301957,
+          "cardCapacityGiB": 119.20928955078125,
+          "cardLocalCapacityWithinAssumption": true,
+          "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+        }
+      },
+      "meanTtftBudgetMs": 1823.8095238095236,
+      "busyDecodeStepBudgetMs": 30.57142857142857,
+      "withinModeledConstraints": true
+    }
+  ],
+  "central": {
+    "assumption": {
+      "name": "中心预算假设",
+      "prefillEfficiency": 0.4,
+      "decodeEfficiency": 0.02
+    },
+    "phase": {
+      "prefill": {
+        "physicalCards": 8,
+        "inferenceInstances": 4,
+        "busyRequestsPerInstance": 15,
+        "effectiveTopsPerInstance": 896.0,
+        "cardWeightGiB": 80.36527256634086,
+        "cardCacheGiB": 0.6068171001970768,
+        "cardRuntimeGiB": 16,
+        "cardTotalGiB": 96.97208966653794,
+        "cardCapacityGiB": 119.20928955078125,
+        "cardLocalCapacityWithinAssumption": true,
+        "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+      },
+      "decode": {
+        "physicalCards": 8,
+        "inferenceInstances": 8,
+        "busyRequestsPerInstance": 8,
+        "effectiveTopsPerInstance": 22.400000000000002,
+        "cardWeightGiB": 87.39245614342393,
+        "cardCacheGiB": 0.3236357867717743,
+        "cardRuntimeGiB": 16,
+        "cardTotalGiB": 103.7160919301957,
+        "cardCapacityGiB": 119.20928955078125,
+        "cardLocalCapacityWithinAssumption": true,
+        "memoryMapping": "uniform chip partition budget; not validated residency or allocation peak"
+      }
+    },
+    "meanTtftBudgetMs": 1442.857142857143,
+    "busyDecodeStepBudgetMs": 16.285714285714285,
+    "withinModeledConstraints": true
+  },
+  "budgetCards": {
+    "workCards": 16,
+    "spareCards": 0,
+    "totalCards": 16
+  },
+  "unmodeledConditions": [
+    "KV INT8 deployment support, numeric quality and conversion overhead",
+    "actual runtime allocated pools and card-local weight mapping",
+    "PD transfer queues, host offload bandwidth and shared expert communication",
+    "exact reference source equivalence to deployment rc1 image"
+  ],
+  "deploymentFeasibilityVerified": false,
+  "measuredSloVerified": false,
+  "globalMinimumCards": null,
+  "finalCards": null,
+  "request": {
+    "model": "DeepSeek-V4.1-Flash",
+    "inputTokens": 8000,
+    "outputTokens": 1000,
+    "lengthStatistic": "mean",
+    "allReasoningTokensIncluded": true,
+    "concurrency": 60,
+    "ttftMs": 3000,
+    "tpotMs": 50,
+    "latencyStatistic": "mean",
+    "load": "balanced_burst_fcfs",
+    "prefixHitPercent": 0,
+    "hardware": "A3-560T",
+    "weightQuant": "W8A8",
+    "kvQuant": "INT8_hypothetical",
+    "framework": "vLLM Ascend v0.30.0rc1",
+    "deployment": "PD separated",
+    "growthPercent": 0,
+    "spareGroups": 0,
+    "scope": "fixed_reference_layout_only"
+  },
+  "identity": {
+    "modelRevision": "314113f8a7dadb388215396ba5fbee2c610a04d6",
+    "configSha256": "8be45ce0476004a3f529fd896115a4a2e800a129ad2d3ec05b16050f52e21879",
+    "referenceDeployRevision": "f03228c14a127af809a232c2bc99ec935ff6be63",
+    "cardUnit": "physical_card"
+  },
+  "assumptions": {
+    "authorization": [
+      "保留Int8 粗略估算即可",
+      "沿用此前同批突发与简化调度模型",
+      "V2 only theory; retain current same-model and precision budget scope"
+    ],
+    "prefill": {
+      "cards": 8,
+      "instances": 4,
+      "cardsPerInstance": 2,
+      "tensorParallel": 4,
+      "expertShards": 16
+    },
+    "decode": {
+      "cards": 8,
+      "instances": 8,
+      "cardsPerInstance": 1,
+      "tensorParallel": 2,
+      "expertShards": 16
+    },
+    "chipsPerCard": 2,
+    "nominalGBPerCard": 128,
+    "int8PeakTopsPerCard": 1120,
+    "weightFactor": 1.1,
+    "denseReplicationFactor": 1.3,
+    "cacheFactor": 1.25,
+    "runtimeGiBPerCard": 16,
+    "inputFixedMs": 300,
+    "decodeFixedMs": 2,
+    "draftWorkFactor": 1.25,
+    "latentScaleBytesPerRow": 4,
+    "indexScaleBytesPerRow": 2,
+    "hostEngramOffload": true,
+    "speculativeGainCredited": false,
+    "scenarios": [
+      {
+        "name": "较高效率假设",
+        "prefillEfficiency": 0.5,
+        "decodeEfficiency": 0.03
+      },
+      {
+        "name": "中心预算假设",
+        "prefillEfficiency": 0.4,
+        "decodeEfficiency": 0.02
+      },
+      {
+        "name": "较低效率假设",
+        "prefillEfficiency": 0.3,
+        "decodeEfficiency": 0.01
+      }
+    ],
+    "effectiveCapacitySource": "explicit uncalibrated engineering assumptions, not hardware measurements",
+    "unverified": [
+      "KV INT8 deployment support, numeric quality and conversion overhead",
+      "actual runtime allocated pools and card-local weight mapping",
+      "PD transfer queues, host offload bandwidth and shared expert communication",
+      "exact reference source equivalence to deployment rc1 image"
+    ]
+  },
+  "inputHashes": {
+    "request.json": "e7dccbb3ab333c7578d0afaf2fc21267c3cbaf71a8a42ae2f74cc045332b2946",
+    "model-input.json": "d97fb8e39b54a7cbcffbe21b7b239b92b352f701042b7299c08484fa5aa6806c",
+    "config.json": "8be45ce0476004a3f529fd896115a4a2e800a129ad2d3ec05b16050f52e21879",
+    "assumptions.json": "8e1d9dafa4b24a971203a3afb5eba068e607a4d142a45e928db59b61004ce9ef"
+  },
+  "algorithmSha256": "53ff817cc4c71e56f1197e000903eb82c18d433784e72127e7a1c1662e494d48",
+  "helperSha256": "14ab654a3a36b35cc6c53944c0f07c040f267ce4bdd4adde922290dce8cfc738",
+  "execution": {
+    "performanceBaselineFilesRead": 0,
+    "networkRequests": 0,
+    "elapsedSeconds": 0.010560099995927885
+  }
+}

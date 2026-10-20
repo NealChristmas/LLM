@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2260" height="1720" viewBox="0 0 2260 1720"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#8f999f"/></marker></defs><rect width="100%" height="100%" fill="white"/><style>text{font-family:Microsoft YaHei,Noto Sans CJK SC,sans-serif;fill:#135b96;font-size:22px;text-anchor:middle}.head{font-weight:700;font-size:25px}.note{font-size:21px;fill:#637586}.edge{fill:none;stroke:#9ca3a7;stroke-width:1.8;marker-end:url(#arrow);stroke-linejoin:round}</style>
+<path class="edge" d="M1100 220 L1100 250 L510 250 L510 280"/>
+<path class="edge" d="M1100 220 L1100 250 L1635 250 L1635 280"/>
+<path class="edge" d="M510 355 L510 380 L180 380 L180 410"/>
+<path class="edge" d="M510 355 L510 380 L510 380 L510 410"/>
+<path class="edge" d="M510 355 L510 380 L840 380 L840 410"/>
+<path class="edge" d="M1635 355 L1635 380 L1225 380 L1225 410"/>
+<path class="edge" d="M1635 355 L1635 380 L1515 380 L1515 410"/>
+<path class="edge" d="M1635 355 L1635 380 L1805 380 L1805 410"/>
+<path class="edge" d="M1635 355 L1635 380 L2095 380 L2095 410"/>
+<path class="edge" d="M180 580 L180 620 L510 620 L510 665"/>
+<path class="edge" d="M510 580 L510 620 L510 620 L510 665"/>
+<path class="edge" d="M840 580 L840 620 L510 620 L510 665"/>
+<path class="edge" d="M510 800 L510 860"/>
+<path class="edge" d="M510 985 L510 1055"/>
+<path class="edge" d="M1225 580 L1225 620 L1370 620 L1370 665"/>
+<path class="edge" d="M1515 580 L1515 620 L1370 620 L1370 665"/>
+<path class="edge" d="M1805 580 L1805 620 L1950 620 L1950 665"/>
+<path class="edge" d="M2095 580 L2095 620 L1950 620 L1950 665"/>
+<path class="edge" d="M1370 860 L1370 935"/>
+<path class="edge" d="M1950 860 L1950 935"/>
+<path class="edge" d="M510 1175 L510 1225 L1100 1225 L1100 1270"/>
+<path class="edge" d="M1370 1075 L1370 1225 L1100 1225 L1100 1270"/>
+<path class="edge" d="M1950 1075 L1950 1225 L1100 1225 L1100 1270"/>
+<path class="edge" d="M1100 1400 L1100 1450"/>
+<rect x="640" y="25" width="920" height="195" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1100.0" y="66.5" class="head">排版示例 · 非默认参数及配置</text>
+<text x="1100.0" y="98.5" class="">平均输入 8,000 / 输出 1,000 Token；并发 60 路</text>
+<text x="1100.0" y="130.5" class="">平均 TTFT ≤ 3秒；平均 TPOT ≤ 50毫秒/Token</text>
+<text x="1100.0" y="162.5" class="">A3-560T：每物理卡128 GB、INT8峰值1,120 TOPS</text>
+<text x="1100.0" y="194.5" class="">W8A8；KV INT8为假设；Prefix Cache命中率0</text>
+<rect x="300" y="280" width="420" height="75" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="510.0" y="325.5" class="head">显存计算 · 每物理卡</text>
+<rect x="1425" y="280" width="420" height="75" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1635.0" y="325.5" class="head">性能计算 · 按推理实例</text>
+<rect x="30" y="410" width="300" height="170" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="180.0" y="439.0" class="head">权重驻留预算</text>
+<text x="180.0" y="471.0" class="">专家分片＋非专家复制</text>
+<text x="180.0" y="503.0" class="">及草稿、保留模块</text>
+<text x="180.0" y="535.0" class="">Prefill ≈ 80.37 GiB</text>
+<text x="180.0" y="567.0" class="">Decode ≈ 87.39 GiB</text>
+<rect x="360" y="410" width="300" height="170" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="510.0" y="439.0" class="head">KV Cache预算</text>
+<text x="510.0" y="471.0" class="">每请求 16.57 MiB × 1.25</text>
+<text x="510.0" y="503.0" class="">按请求分配及复制计入</text>
+<text x="510.0" y="535.0" class="">Prefill ≈ 0.61 GiB</text>
+<text x="510.0" y="567.0" class="">Decode ≈ 0.32 GiB</text>
+<rect x="690" y="410" width="300" height="170" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="840.0" y="439.0" class="head">运行预留</text>
+<text x="840.0" y="471.0" class="">每物理卡 16 GiB</text>
+<text x="840.0" y="503.0" class="">覆盖工作区等预算</text>
+<text x="840.0" y="535.0" class="">并非现场分配峰值</text>
+<text x="840.0" y="567.0" class="">不再另扣显存可用比例</text>
+<rect x="220" y="665" width="580" height="135" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="510.0" y="692.5" class="head">每物理卡显存需求</text>
+<text x="510.0" y="724.5" class="">权重驻留预算＋缓存预算＋运行预留</text>
+<text x="510.0" y="756.5" class="">Prefill ≈ 80.37＋0.61＋16 ≈ 96.97 GiB</text>
+<text x="510.0" y="788.5" class="">Decode ≈ 87.39＋0.32＋16 ≈ 103.72 GiB</text>
+<rect x="220" y="860" width="580" height="125" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="510.0" y="882.5" class="head">与单卡容量比较</text>
+<text x="510.0" y="914.5" class="">128 GB十进制标称容量 ≈ 119.21 GiB</text>
+<text x="510.0" y="946.5" class="">Prefill 96.97、Decode 103.72 均低于标称容量</text>
+<text x="510.0" y="978.5" class="">卡内仅按均匀分片假设核算，真实峰值待验证</text>
+<rect x="220" y="1055" width="580" height="120" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="510.0" y="1075.0" class="head">显存约束判断</text>
+<text x="510.0" y="1107.0" class="">当前 Prefill 8张＋Decode 8张布局</text>
+<text x="510.0" y="1139.0" class="">假设分片下容量可容纳</text>
+<text x="510.0" y="1171.0" class="">不等于已确定显存所需最少卡数</text>
+<rect x="1090" y="410" width="270" height="170" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1225.0" y="439.0" class="head">Prefill工作量</text>
+<text x="1225.0" y="471.0" class="">输入Token数 × 2</text>
+<text x="1225.0" y="503.0" class="">× Prefill激活参数</text>
+<text x="1225.0" y="535.0" class="">8,000 × 2 × 80亿</text>
+<text x="1225.0" y="567.0" class="">＝ 128 TOP / 请求</text>
+<rect x="1380" y="410" width="270" height="170" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1515.0" y="439.0" class="head">Prefill有效算力</text>
+<text x="1515.0" y="471.0" class="">每实例2张物理卡</text>
+<text x="1515.0" y="503.0" class="">卡数 × 单卡峰值 × 效率</text>
+<text x="1515.0" y="535.0" class="">2 × 1,120 × 40%</text>
+<text x="1515.0" y="567.0" class="">＝ 896 TOPS</text>
+<rect x="1670" y="410" width="270" height="170" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1805.0" y="439.0" class="head">Decode工作量</text>
+<text x="1805.0" y="471.0" class="">2 × Decode激活参数</text>
+<text x="1805.0" y="503.0" class="">2 × 160亿</text>
+<text x="1805.0" y="535.0" class="">＝ 0.032 TOP / Token</text>
+<text x="1805.0" y="567.0" class="">草稿额外工作预算 ×1.25</text>
+<rect x="1960" y="410" width="270" height="170" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="2095.0" y="439.0" class="head">Decode有效算力</text>
+<text x="2095.0" y="471.0" class="">每实例1张物理卡</text>
+<text x="2095.0" y="503.0" class="">卡数 × 单卡峰值 × 效率</text>
+<text x="2095.0" y="535.0" class="">1 × 1,120 × 2%</text>
+<text x="2095.0" y="567.0" class="">＝ 22.4 TOPS</text>
+<rect x="1090" y="665" width="560" height="195" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1370.0" y="690.5" class="head">平均 TTFT 预算</text>
+<text x="1370.0" y="722.5" class="">60路 ÷ 4个Prefill实例 ＝ 每实例15路</text>
+<text x="1370.0" y="754.5" class="">平均完成顺序＝(1＋15)÷2＝8</text>
+<text x="1370.0" y="786.5" class="">固定开销＋工作量÷有效算力×平均完成顺序</text>
+<text x="1370.0" y="818.5" class="">≈ 0.300＋(128÷896)×8</text>
+<text x="1370.0" y="850.5" class="">≈ 1.44 秒</text>
+<rect x="1670" y="665" width="560" height="195" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1950.0" y="690.5" class="head">TPOT 预算近似</text>
+<text x="1950.0" y="722.5" class="">60路 ÷ 8个Decode实例，最繁忙8路</text>
+<text x="1950.0" y="754.5" class="">并发×每Token工作量×草稿系数÷有效算力</text>
+<text x="1950.0" y="786.5" class="">再换算毫秒并加入固定开销</text>
+<text x="1950.0" y="818.5" class="">≈ 8×0.032×1.25÷22.4×1,000＋2</text>
+<text x="1950.0" y="850.5" class="">≈ 16.3 毫秒/Token</text>
+<rect x="1090" y="935" width="560" height="140" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1370.0" y="965.0" class="head">TTFT 约束判断</text>
+<text x="1370.0" y="997.0" class="">预算 1.44 秒 ≤ 平均目标 3秒</text>
+<text x="1370.0" y="1029.0" class="">均衡、逐请求先到先服务的简化模型</text>
+<text x="1370.0" y="1061.0" class="">40%效率、300毫秒固定开销均为假设</text>
+<rect x="1670" y="935" width="560" height="140" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1950.0" y="965.0" class="head">TPOT 约束判断</text>
+<text x="1950.0" y="997.0" class="">近似 16.3 ≤ 目标 50毫秒/Token</text>
+<text x="1950.0" y="1029.0" class="">以最繁忙实例步长近似，非真实平均值</text>
+<text x="1950.0" y="1061.0" class="">2%效率与额外开销均为未校准假设</text>
+<rect x="700" y="1270" width="800" height="130" rx="22" fill="#e5f2ff" stroke="#d0dce5" stroke-width="1.5"/>
+<text x="1100.0" y="1295.0" class="head">同时核对显存、TTFT和TPOT预算</text>
+<text x="1100.0" y="1327.0" class="">当前固定布局在所列假设下满足三项约束</text>
+<text x="1100.0" y="1359.0" class="">未搜索更小布局；未验证通信、主机卸载及KV INT8支持</text>
+<text x="1100.0" y="1391.0" class="">不把满足三项预算理解为真实部署达标</text>
+<rect x="700" y="1450" width="800" height="130" rx="22" fill="#e1f2e3" stroke="#69a66f" stroke-width="1.5"/>
+<text x="1100.0" y="1475.0" class="head">当前参考布局的理论预算候选</text>
+<text x="1100.0" y="1507.0" class="">工作卡＝Prefill 8张＋Decode 8张＝16张物理卡</text>
+<text x="1100.0" y="1539.0" class="">备用卡＝0；总计16张物理卡</text>
+<text x="1100.0" y="1571.0" class="">更小布局尚未评估，不能称为全局最少卡数</text>
+<rect x="300" y="1620" width="1600" height="75" rx="22" fill="#fff3cf" stroke="#dba439" stroke-width="1.5"/>
+<text x="1100.0" y="1665.5" class="head">适用限制：KV INT8格式、有效效率、KV传输、Engram卸载和实际运行峰值均待验证。</text>
+</svg>

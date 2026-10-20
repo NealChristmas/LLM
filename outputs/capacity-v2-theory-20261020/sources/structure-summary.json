@@ -1,0 +1,65 @@
+{
+  "identity": {
+    "modelRevision": "314113f8a7dadb388215396ba5fbee2c610a04d6",
+    "configSha256": "8be45ce0476004a3f529fd896115a4a2e800a129ad2d3ec05b16050f52e21879",
+    "referenceDeployRevision": "f03228c14a127af809a232c2bc99ec935ff6be63",
+    "cardUnit": "physical_card",
+    "scriptSha256": "a1a66d5e536ba23eab6dfc06bad0375eb12f268d255b0fec497981d1edc92f47"
+  },
+  "sourceCheckpoint": {
+    "payloadBytes": 510286023000,
+    "groups": {
+      "vision_and_aligner": {
+        "tensorCount": 263,
+        "nativePayloadBytes": 970506240,
+        "quantMetadataBytes": 0,
+        "logicalTensorElements": 485253120
+      },
+      "main_other": {
+        "tensorCount": 1257,
+        "nativePayloadBytes": 9846779328,
+        "quantMetadataBytes": 6676480,
+        "logicalTensorElements": 8299052144
+      },
+      "main_routed_experts": {
+        "tensorCount": 92160,
+        "nativePayloadBytes": 288777830400,
+        "quantMetadataBytes": 16986931200,
+        "logicalTensorElements": 543581798400
+      },
+      "draft_other": {
+        "tensorCount": 97,
+        "nativePayloadBytes": 713428872,
+        "quantMetadataBytes": 551424,
+        "logicalTensorElements": 635817570
+      },
+      "draft_routed_experts": {
+        "tensorCount": 2304,
+        "nativePayloadBytes": 7219445760,
+        "quantMetadataBytes": 424673280,
+        "logicalTensorElements": 13589544960
+      },
+      "engram_tables": {
+        "tensorCount": 4,
+        "nativePayloadBytes": 202758032400,
+        "quantMetadataBytes": 6144182800,
+        "logicalTensorElements": 196613849600
+      }
+    },
+    "scope": "Pinned native checkpoint inventory, not target W8A8 resident memory"
+  },
+  "targetDataOnlyComponents": {
+    "mainRoutedExpertW8Bytes": 543581798400,
+    "draftRoutedExpertW8Bytes": 13589544960,
+    "engramINT8HostTableDataBytesPerNode": 196613849600,
+    "scope": "User-approved reference W8/INT8 data only; excludes target scales, unquantized modules, padding, replicas and workspaces",
+    "completeDeviceMemoryBytes": null
+  },
+  "structuralVerification": {
+    "headerNamesMatchFullIndex": true,
+    "nativePayloadMatchesIndexTotalBytes": true,
+    "engramShapeMatchesConfig": true,
+    "nativeEncodingMatchesOfficial890BytesPerToken": true,
+    "deploymentPerformanceVerified": false
+  }
+}

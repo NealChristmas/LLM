@@ -1,0 +1,59 @@
+{
+  "authorization": [
+    "保留Int8 粗略估算即可",
+    "沿用此前同批突发与简化调度模型",
+    "V2 only theory; retain current same-model and precision budget scope"
+  ],
+  "prefill": {
+    "cards": 8,
+    "instances": 4,
+    "cardsPerInstance": 2,
+    "tensorParallel": 4,
+    "expertShards": 16
+  },
+  "decode": {
+    "cards": 8,
+    "instances": 8,
+    "cardsPerInstance": 1,
+    "tensorParallel": 2,
+    "expertShards": 16
+  },
+  "chipsPerCard": 2,
+  "nominalGBPerCard": 128,
+  "int8PeakTopsPerCard": 1120,
+  "weightFactor": 1.1,
+  "denseReplicationFactor": 1.3,
+  "cacheFactor": 1.25,
+  "runtimeGiBPerCard": 16,
+  "inputFixedMs": 300,
+  "decodeFixedMs": 2,
+  "draftWorkFactor": 1.25,
+  "latentScaleBytesPerRow": 4,
+  "indexScaleBytesPerRow": 2,
+  "hostEngramOffload": true,
+  "speculativeGainCredited": false,
+  "scenarios": [
+    {
+      "name": "较高效率假设",
+      "prefillEfficiency": 0.5,
+      "decodeEfficiency": 0.03
+    },
+    {
+      "name": "中心预算假设",
+      "prefillEfficiency": 0.4,
+      "decodeEfficiency": 0.02
+    },
+    {
+      "name": "较低效率假设",
+      "prefillEfficiency": 0.3,
+      "decodeEfficiency": 0.01
+    }
+  ],
+  "effectiveCapacitySource": "explicit uncalibrated engineering assumptions, not hardware measurements",
+  "unverified": [
+    "KV INT8 deployment support, numeric quality and conversion overhead",
+    "actual runtime allocated pools and card-local weight mapping",
+    "PD transfer queues, host offload bandwidth and shared expert communication",
+    "exact reference source equivalence to deployment rc1 image"
+  ]
+}

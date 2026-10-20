@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM理论容量评估 V2"
+  short_description: "按模型逐布局重算并比较物理卡与时延，输出纯理论报告及流程图"
+  default_prompt: "使用 $llm-capacity-sizing-v2，仅做理论容量评估：复用模型与硬件依据，按实际结构适配算法，明确预算假设、逐候选重算并比较布局，输出Markdown、数值代入与流程图。"
