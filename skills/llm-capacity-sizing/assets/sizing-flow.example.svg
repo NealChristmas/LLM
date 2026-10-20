@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1420" viewBox="0 0 1500 1420"><defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="&#35;8496a8"/></marker></defs><rect width="1500" height="1420" fill="white"/><style>text{font-family:'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#173b60;font-size:19px} .title{font-size:28px;font-weight:700}.head{font-weight:700;font-size:21px}.note{font-size:16px;fill:#5a6c7e}path{fill:none;stroke:#8496a8;stroke-width:2;marker-end:url(#arrow)}</style>
+<text x="750" y="43" text-anchor="middle" class="title">DeepSeek-V4.1-Flash · 算力测算全流程</text>
+<text x="750" y="76" text-anchor="middle" class="note">本轮粗估示例｜卡数均指物理卡｜事实、预算假设与条件参考分别标识</text>
+<rect x="260" y="105" width="980" height="125" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="750.0" y="130.5" text-anchor="middle" class="head">需求与参考部署</text>
+<text x="750.0" y="159.5" text-anchor="middle" class="">平均输入 / 输出 16,000 / 1,000 Token；100 路突发 × 1.2 ＝ 120 路</text>
+<text x="750.0" y="188.5" text-anchor="middle" class="">平均 TTFT ≤ 4 秒；平均 TPOT ≤ 20 毫秒/Token</text>
+<text x="750.0" y="217.5" text-anchor="middle" class="">每组：输入侧 8 张 ＋ 生成侧 8 张 ＝ 16 张；每张含 2 个 Device</text>
+<path d="M750 230 L750 255 L260.0 255 L260.0 280"/>
+<path d="M750 230 L750 255 L750.0 255 L750.0 280"/>
+<path d="M750 230 L750 255 L1240.0 255 L1240.0 280"/>
+<rect x="35" y="280" width="450" height="165" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="260.0" y="325.5" text-anchor="middle" class="head">① 显存预算</text>
+<text x="260.0" y="354.5" text-anchor="middle" class="">按模型张量与实际缓存结构计算</text>
+<text x="260.0" y="383.5" text-anchor="middle" class="">权重 ＋ 请求缓存 ＋ 运行预留</text>
+<text x="260.0" y="412.5" text-anchor="middle" class="">分别核对输入 / 生成侧每个 Device</text>
+<rect x="525" y="280" width="450" height="165" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="750.0" y="325.5" text-anchor="middle" class="head">② 输入阶段预算</text>
+<text x="750.0" y="354.5" text-anchor="middle" class="">每进程 4 个 Device，4 进程/组</text>
+<text x="750.0" y="383.5" text-anchor="middle" class="">有效算力 ＝ 4 × 560 × 40%</text>
+<text x="750.0" y="412.5" text-anchor="middle" class="">＝ 896 TOPS（40% 为预算假设）</text>
+<rect x="1015" y="280" width="450" height="165" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="1240.0" y="325.5" text-anchor="middle" class="head">③ 生成阶段预算</text>
+<text x="1240.0" y="354.5" text-anchor="middle" class="">每进程 2 个 Device，8 进程/组</text>
+<text x="1240.0" y="383.5" text-anchor="middle" class="">有效算力 ＝ 2 × 560 × 2%</text>
+<text x="1240.0" y="412.5" text-anchor="middle" class="">＝ 22.4 TOPS（2% 为预算假设）</text>
+<path d="M260.0 445 L260.0 480"/>
+<path d="M750.0 445 L750.0 480"/>
+<path d="M1240.0 445 L1240.0 480"/>
+<rect x="35" y="480" width="450" height="205" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="260.0" y="531.0" text-anchor="middle" class="head">验证 2 个工作组的显存</text>
+<text x="260.0" y="560.0" text-anchor="middle" class="">输入侧：40.18 ＋ 0.95 ＋ 8 ≈ 49.14 GiB</text>
+<text x="260.0" y="589.0" text-anchor="middle" class="">生成侧：43.70 ＋ 0.51 ＋ 8 ≈ 52.21 GiB</text>
+<text x="260.0" y="618.0" text-anchor="middle" class="">每 Device 标称容量折算约 59.60 GiB</text>
+<text x="260.0" y="647.0" text-anchor="middle" class="">预算内可容纳；实际分配池仍待核验</text>
+<rect x="525" y="480" width="450" height="205" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="750.0" y="516.5" text-anchor="middle" class="head">计算平均首 Token 时间</text>
+<text x="750.0" y="545.5" text-anchor="middle" class="">单请求输入工作量 ≈ 256 TOP</text>
+<text x="750.0" y="574.5" text-anchor="middle" class="">两组共 8 进程，每进程 15 请求</text>
+<text x="750.0" y="603.5" text-anchor="middle" class="">平均完成顺序 ＝（1 ＋ 15）÷ 2 ＝ 8</text>
+<text x="750.0" y="632.5" text-anchor="middle" class="">TTFT ≈ 0.3 ＋（256 ÷ 896）× 8</text>
+<text x="750.0" y="661.5" text-anchor="middle" class="">≈ 2.59 秒 ≤ 4 秒</text>
+<rect x="1015" y="480" width="450" height="205" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="1240.0" y="516.5" text-anchor="middle" class="head">计算每 Token 生成耗时</text>
+<text x="1240.0" y="545.5" text-anchor="middle" class="">两组共 16 进程，最繁忙进程 8 路</text>
+<text x="1240.0" y="574.5" text-anchor="middle" class="">单 Token 工作量 ≈ 0.032 TOP</text>
+<text x="1240.0" y="603.5" text-anchor="middle" class="">TPOT ≈ 8 × 0.032 × 1.25 ÷ 22.4</text>
+<text x="1240.0" y="632.5" text-anchor="middle" class="">× 1,000 ＋ 2 ≈ 16.3 毫秒 ≤ 20 毫秒</text>
+<text x="1240.0" y="661.5" text-anchor="middle" class="">1.25 与 2 毫秒均为开销假设</text>
+<path d="M260.0 685 L260.0 720 L750 720 L750 755"/>
+<path d="M750.0 685 L750.0 720 L750 720 L750 755"/>
+<path d="M1240.0 685 L1240.0 720 L750 720 L750 755"/>
+<rect x="310" y="755" width="880" height="120" rx="16" fill="#e5f2ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="750.0" y="792.5" text-anchor="middle" class="head">理论中心候选：2 个工作组</text>
+<text x="750.0" y="821.5" text-anchor="middle" class="">1 组：TTFT 4.73 秒、TPOT 28.8 毫秒，超出目标</text>
+<text x="750.0" y="850.5" text-anchor="middle" class="">2 组：显存、平均 TTFT、TPOT 在本轮假设下满足约束</text>
+<rect x="35" y="930" width="580" height="150" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="325.0" y="968.0" text-anchor="middle" class="head">实测基线独立核算 · 记录 182930</text>
+<text x="325.0" y="997.0" text-anchor="middle" class="">每组 16 张；并发 64；平均长度 16,000 / 1,000</text>
+<text x="325.0" y="1026.0" text-anchor="middle" class="">平均 TTFT 3,886.1 毫秒；平均 TPOT 15.9 毫秒</text>
+<text x="325.0" y="1055.0" text-anchor="middle" class="">条件参考工作组 ＝ 向上取整［120 ÷ 64］＝ 2 组</text>
+<rect x="895" y="930" width="570" height="150" rx="16" fill="#fff3dc" stroke="#e7bb60" stroke-width="1.5"/>
+<text x="1180.0" y="968.0" text-anchor="middle" class="head">基线适用限制</text>
+<text x="1180.0" y="997.0" text-anchor="middle" class="">原压测负载未知，现场部署细节未完整核验</text>
+<text x="1180.0" y="1026.0" text-anchor="middle" class="">64 路能力能否迁移到同批突发尚未确认</text>
+<text x="1180.0" y="1055.0" text-anchor="middle" class="">仅作条件参考，不能证明本轮目标达标</text>
+<path d="M615 1005 L895 1005"/>
+<path d="M750 875 L750 1120"/>
+<path d="M325 1080 L325 1100 L750 1100 L750 1120"/>
+<rect x="310" y="1120" width="880" height="110" rx="16" fill="#e8f3ff" stroke="#c3d7e8" stroke-width="1.5"/>
+<text x="750.0" y="1152.5" text-anchor="middle" class="head">综合选择：以理论中心情景作为预算候选</text>
+<text x="750.0" y="1181.5" text-anchor="middle" class="">基线只核对数量级；不取平均、不机械取最大值</text>
+<text x="750.0" y="1210.5" text-anchor="middle" class="">两类结果相同，也不构成实测验证</text>
+<path d="M750 1230 L750 1260"/>
+<rect x="310" y="1260" width="880" height="105" rx="16" fill="#e3f3e7" stroke="#72ae83" stroke-width="1.5"/>
+<text x="750.0" y="1290.0" text-anchor="middle" class="head">预算总量 ＝ 工作卡 ＋ 备用卡</text>
+<text x="750.0" y="1319.0" text-anchor="middle" class="">2 × 16 ＋ 1 × 16 ＝ 48 张物理卡</text>
+<text x="750.0" y="1348.0" text-anchor="middle" class="">工作 32 张；备用 16 张；同批突发能力仍需补测</text>
+<text x="750" y="1400" text-anchor="middle" class="note">说明：均衡先到先服务输入模型；平均长度预算；效率与固定开销未经实测校准。详见测算正文与依据附录。</text></svg>
