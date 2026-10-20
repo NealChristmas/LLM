@@ -32,7 +32,7 @@ python scripts/sizing.py prepare --baselines data/a.json data/b.jsonl --annotati
 
 上例只演示格式，不能作为真实记录的口径结论。`verified` 由用户或材料确认后改为true；source不能为空。可增加 `rawHash` 绑定工具准备结果中的源记录摘要，不一致时拒绝套用。
 
-枚举：统计 `p95/mean/p99/max/unknown`；负载 `closed/burst/arrival/unknown`；长度 `fixed/max/mean/unknown`；推理Token `included/excluded/unknown`；K `1000/1024/unknown`。`qps` 必须是同测试点实测请求/秒，不是Token吞吐。
+枚举：统计 `p95/mean/p99/max/unknown`；负载 `closed/burst/arrival/unknown`；长度 `fixed/max/mean/unknown`；推理Token `included/excluded/unknown`；K `1000/1024/unknown`。P95表示压测样本中约95%的请求延迟不高于该值、约5%更慢；P95 TTFT/TPOT必须来自相应统计分位数，不能用平均值换算或替代。`qps` 必须是同测试点实测请求/秒，不是Token吞吐。
 
 ## 用户需求
 
