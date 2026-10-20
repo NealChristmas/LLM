@@ -57,4 +57,4 @@ python scripts/sizing.py assess --library work/library.json --request work/reque
 
 除内部JSON/Markdown外，默认生成同前缀`.client.md`客户正文和`.evidence.md`依据附录，沿用已确认的Markdown模板v1.0；仅明确需要时用`--html`额外导出HTML。客户交付标准见[客户交付规范](customer-deliverable.md)。
 
-交互入口发现需求或必要证据不完整时立即暂停，向用户集中请求补充输入，不调用assess生成客户报告。脚本仍保留诊断输出兼容性；意外产生的不足报告仅作内部诊断，不交付、不代表允许继续。错误JSON或非法数值退出码2，不产生半份准备数据。Python 3.10及以上，无第三方依赖。
+交互入口发现需求或必要证据不完整时，先向用户集中请求补充输入并等待回复；用户明确无法提供且不调整范围后才中止。等待补充期间不调用assess生成客户报告。脚本仍保留诊断输出兼容性；意外产生的不足报告仅作内部诊断，不交付、不代表允许继续。错误JSON或非法数值退出码2，不产生半份准备数据。Python 3.10及以上，无第三方依赖。
