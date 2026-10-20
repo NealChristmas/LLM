@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM算力容量评估"
+  short_description: "导入基线与模型配置，自动理论预算、基线核算和综合判断，追溯依据"
+  default_prompt: "使用 $llm-capacity-sizing，导入基线和模型config.json，无需用户提供理论JSON；根据需求和有来源的硬件参数调用工具，先理论测算、再基线测算、最后综合判断，并生成带计算规则图和数值代入的客户Markdown测算文档。"

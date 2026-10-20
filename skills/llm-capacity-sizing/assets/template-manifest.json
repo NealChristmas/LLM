@@ -1,0 +1,12 @@
+{
+  "templateVersion": "1.0",
+  "confirmedDate": "2026-10-20",
+  "format": "Markdown",
+  "purpose": "已确认的客户报告版式基准；其中数值为模拟案例，不是新项目默认值",
+  "files": {
+    "customer-report.md": "f525b32f3230c9bbccc8f7c06688124ae1cf43b4f0f20535045bbce377fa6a80",
+    "customer-report.evidence.md": "3f96445f835560632f1008b935f128ebf623b61cf279736bf492d86346301541"
+  },
+  "approvedSourceSha256": "d4621632790bd0b94406295cd2957b63abf1d06842de8a1fc095122abd4cf413",
+  "renderer": "scripts/client_report.py"
+}

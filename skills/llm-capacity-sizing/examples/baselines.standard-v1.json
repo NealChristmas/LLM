@@ -1,0 +1,72 @@
+{
+  "type": "llm-capacity-baselines",
+  "schemaVersion": "1.0",
+  "records": [
+    {
+      "raw": {
+        "id": 182930,
+        "importOrder": 2462,
+        "sheetType": "性能地图-LLM/VLM推理/小模型推理",
+        "modelName": "DeepSeek-V4.1-Flash",
+        "modelSeries": "DeepSeek",
+        "modalityType": "文本",
+        "bizLoadFeature": {
+          "输入输出序列长度": "16K/1K",
+          "延迟目标": "低时延"
+        },
+        "deployConfig": {
+          "芯片型号": "A3-560T",
+          "CPU架构": "ARM",
+          "部署卡数": 16,
+          "部署形态": "PD分离",
+          "量化格式": "W8A8C16",
+          "推理框架": "vLLM Ascend v0.30.0rc1",
+          "镜像": "quay.io/ascend/vllm-ascend:v0.30.0rc1-a3"
+        },
+        "perfData": {
+          "并发数": 64,
+          "Prefix Cache命中率": 0.0,
+          "单卡输出吞吐TPS": 110.1,
+          "单卡E2E吞吐TPS": 1875.1,
+          "TTFT(ms)": 3886.1,
+          "TPOT(ms)": 15.9,
+          "E2E时延(ms)": 20197.0
+        },
+        "optimization": {
+          "并行策略": "1P:DP4+TP4/1D:DP8+TP2"
+        },
+        "tuningStatus": "性能调优中",
+        "businessScenario": "基线",
+        "releaseDate": "2026-09-10",
+        "keyIoSeqLen": "16K/1K",
+        "keyChipModel": "A3-560T",
+        "normalizedChipModel": "A3",
+        "keyDeploymentForm": "PD分离",
+        "keyDeploymentCardCount": "16",
+        "keyQuantizationFormat": "W8A8C16",
+        "keyInferenceFramework": "vLLM Ascend v0.30.0rc1",
+        "keyConcurrency": "64",
+        "keySingleCardOutputTps": "110.1",
+        "keySingleCardE2ETps": "1875.1",
+        "keyTpot": "15.9",
+        "keyTtft": "3886.1",
+        "keyPrefixCacheHitRate": "0",
+        "updateTime": "2026-10-17 00:30:46"
+      },
+      "meta": {
+        "ttftStat": "mean",
+        "tpotStat": "mean",
+        "load": "unknown",
+        "kBase": "1000",
+        "lengthStat": "mean",
+        "reasoning": "included",
+        "qps": null,
+        "source": "用户在本次对话确认：TTFT/TPOT均为平均值，K=1000，16K/1K为平均长度，输出包含全部推理词元，16卡为输入侧与生成侧合计。压测负载方式尚未确认，整体核对未完成。",
+        "verified": false,
+        "cardCountScope": "total",
+        "prefillCards": null,
+        "decodeCards": null
+      }
+    }
+  ]
+}

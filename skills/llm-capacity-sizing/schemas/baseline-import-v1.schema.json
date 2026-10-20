@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LLM容量评估统一基线导入 v1.0",
+  "type": "object",
+  "required": [
+    "type",
+    "schemaVersion",
+    "records"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "llm-capacity-baselines"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "raw",
+          "meta"
+        ],
+        "properties": {
+          "raw": {
+            "type": "object",
+            "required": [
+              "id",
+              "modelName",
+              "modalityType",
+              "bizLoadFeature",
+              "deployConfig",
+              "perfData",
+              "optimization",
+              "tuningStatus"
+            ],
+            "properties": {
+              "id": {
+                "type": [
+                  "string",
+                  "integer"
+                ]
+              },
+              "modelName": {
+                "type": "string",
+                "minLength": 1
+              },
+              "modalityType": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bizLoadFeature": {
+                "type": "object",
+                "required": [
+                  "输入输出序列长度"
+                ],
+                "properties": {
+                  "输入输出序列长度": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": true
+              },
+              "deployConfig": {
+                "type": "object",
+                "required": [
+                  "芯片型号",
+                  "CPU架构",
+                  "部署卡数",
+                  "部署形态",
+                  "量化格式",
+                  "推理框架"
+                ],
+                "properties": {
+                  "芯片型号": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "CPU架构": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "部署卡数": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "部署形态": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "量化格式": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "推理框架": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": true
+              },
+              "perfData": {
+                "type": "object",
+                "required": [
+                  "并发数",
+                  "Prefix Cache命中率",
+                  "TTFT(ms)",
+                  "TPOT(ms)"
+                ],
+                "properties": {
+                  "并发数": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "Prefix Cache命中率": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "TTFT(ms)": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "TPOT(ms)": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "单卡输出吞吐TPS": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "单卡E2E吞吐TPS": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "E2E时延(ms)": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "minimum": 0
+                  }
+                },
+                "additionalProperties": true
+              },
+              "optimization": {
+                "type": "object",
+                "required": [
+                  "并行策略"
+                ],
+                "properties": {
+                  "并行策略": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "tuningStatus": {
+                "type": "string"
+              },
+              "updateTime": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          },
+          "meta": {
+            "type": "object",
+            "required": [
+              "ttftStat",
+              "tpotStat",
+              "load",
+              "kBase",
+              "lengthStat",
+              "reasoning",
+              "cardCountScope",
+              "qps",
+              "source",
+              "verified"
+            ],
+            "properties": {
+              "ttftStat": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "mean",
+                  "p95",
+                  "p99",
+                  "max"
+                ]
+              },
+              "tpotStat": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "mean",
+                  "p95",
+                  "p99",
+                  "max"
+                ]
+              },
+              "load": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "closed",
+                  "burst",
+                  "arrival"
+                ]
+              },
+              "kBase": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "1000",
+                  "1024"
+                ]
+              },
+              "lengthStat": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "fixed",
+                  "max",
+                  "mean"
+                ]
+              },
+              "reasoning": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "included",
+                  "excluded"
+                ]
+              },
+              "cardCountScope": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "total",
+                  "per_stage"
+                ]
+              },
+              "qps": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "exclusiveMinimum": 0
+              },
+              "source": {
+                "type": "string"
+              },
+              "verified": {
+                "type": "boolean"
+              },
+              "rawHash": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "prefillCards": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1
+              },
+              "decodeCards": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
